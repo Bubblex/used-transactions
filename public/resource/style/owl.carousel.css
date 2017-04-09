@@ -80,13 +80,13 @@
 	position: absolute;
 	top: 23%;
 	left: -5%;
-	background: url(../images/c-arrows.png) no-repeat;
+	background: url(../image/c-arrows.png) no-repeat;
 }
 .owl-next{
 	position: absolute;
 	top:23%;
 	right: -5%;
-	background: url(../images/c-arrows.png) no-repeat -39px 0px;
+	background: url(../image/c-arrows.png) no-repeat -39px 0px;
 }
 /* Styling Pagination*/
 
@@ -106,7 +106,7 @@
 	-moz-border-radius: 20px;
 	-o-border-radius: 20px;
 	border-radius: 20px;
-	background: url(../images/c-arrows.png) no-repeat;
+	background: url(../image/c-arrows.png) no-repeat;
 }
 
 .owl-theme .owl-controls .owl-page.active span,
