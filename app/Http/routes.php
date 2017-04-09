@@ -66,4 +66,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('', function() {
         return view('admin.index');
     });
+
+    // 登录页
+    Route::get('login', function() {
+        return view('admin.login');
+    });
 });
