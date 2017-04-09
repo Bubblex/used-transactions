@@ -13,7 +13,7 @@
 
 // 首页
 Route::get('/', function () {
-    return view('mail.home.index');
+    return view('mall.home.index');
 });
 
 // 账户中心
@@ -25,7 +25,7 @@ Route::group(['prefix' => 'account'], function() {
 
     // 注册
     Route::get('register', function() {
-        return view('mail.account.register');
+        return view('mall.account.register');
     });
 });
 
@@ -33,12 +33,12 @@ Route::group(['prefix' => 'account'], function() {
 Route::group(['prefix' => 'goods'], function() {
     // 商品详情
     Route::get('detail', function() {
-        return view('mail.goods.detail');
+        return view('mall.goods.detail');
     });
 
     // 商品列表
     Route::get('list', function() {
-        return view('mail.goods.list');
+        return view('mall.goods.list');
     });
 });
 
@@ -46,17 +46,17 @@ Route::group(['prefix' => 'goods'], function() {
 Route::group(['prefix' => 'mine'], function() {
     // 修改个人资料
     Route::get('change', function() {
-        return view('mail.mine.change');
+        return view('mall.mine.change');
     });
 
     // 个人信息
     Route::get('info', function() {
-        return view('mail.mine.info');
+        return view('mall.mine.info');
     });
 
     // 发布的商品
     Route::get('goods', function() {
-        return view('mail.mine.goods');
+        return view('mall.mine.goods');
     });
 });
 
