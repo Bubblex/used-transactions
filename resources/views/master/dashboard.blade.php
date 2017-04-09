@@ -78,7 +78,6 @@
                     <span class="label label-danger pull-right">70%</span>
                   </span>
                 </h4>
-
                 <div class="progress progress-xxs">
                   <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                 </div>
