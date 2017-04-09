@@ -1,0 +1,39 @@
+.c1 i {
+    font-size: 1.3em;
+}
+.c1 {
+    width: 130px;
+}
+.h_search {
+    margin: 0.5% 8% 0 5%;
+    float: left;
+}
+.h_login，
+.logined {
+    float: left;
+    width: 200px;
+}
+.h_login .add_a {
+    margin-top: 5px;
+    line-height: 32px;
+    margin-right: 30px;
+    display: inline-block;
+}
+.h_login .add_a:hover {
+    color: #4CCFC1;
+}
+.logined img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.logined span {
+    max-width: 150px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
+    margin-bottom: 10px;
+    margin-left: 12px;
+    color: #4CCFC1;
+}
