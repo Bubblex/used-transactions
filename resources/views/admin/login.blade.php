@@ -1,16 +1,20 @@
 @extends('master.master')
 
 @section('main')
-  <form method="POST" action="/auth/login">
+  @if (session('message'))
+    <div>{{ session('message') }}</div>
+  @endif
+
+  <form method="POST" action="/admin/login">
     {!! csrf_field() !!}
 
     <div>
-      Email
-      <input type="email" name="email" value="{{ old('email') }}">
+      用户名
+      <input type="text" name="account" value="{{ old('email') }}">
     </div>
 
     <div>
-      Password
+      密码
       <input type="password" name="password" id="password">
     </div>
 
@@ -19,7 +23,7 @@
     </div>
 
     <div>
-      <button type="submit">Login</button>
+      <button type="submit">登录</button>
     </div>
   </form>
 @endsection

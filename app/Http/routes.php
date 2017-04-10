@@ -61,14 +61,13 @@ Route::group(['prefix' => 'mine'], function() {
 });
 
 // 后台
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     // 首页
-    Route::get('', function() {
-        return view('admin.index');
-    });
+    Route::get('', 'AccountController@index');
 
     // 登录页
-    Route::get('login', function() {
-        return view('admin.login');
-    });
+    Route::get('login', 'AccountController@login');
+
+    // 登录
+    Route::post('login', 'AccountController@doLogin');
 });
