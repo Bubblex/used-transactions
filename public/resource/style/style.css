@@ -75,7 +75,7 @@ body {
 	font-size: 0.8725em;
 	text-transform: capitalize;
 }
-.h_search input[type="submit"]{
+.h_search span[type="submit"]{
 	-webkit-appearance: none;
 	background: url('../image/search.png') no-repeat 10px 5px;
 	padding: 6px 0px;
@@ -86,8 +86,9 @@ body {
 	outline: none;
 	position: absolute;
 	right: 0px;
+	height: 20px;
 }
-.h_search input[type="submit"]:hover {
+.h_search span[type="submit"]:hover {
 	background: url('../image/search_h.png') no-repeat 10px 5px;
 }
 /*------start-top-nav------*/
@@ -499,7 +500,6 @@ body {
 	background: #3CC395;
 	color: #ffffff;
 	padding: 8px 20px;
-	margin-left: 30px;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
@@ -571,7 +571,10 @@ body {
 	line-height: 1.8em;
 	color: #ffffff;
 }
+
+/*底部footer管理员登录链接*/
 .copy p a{
+	margin-left: 20px;
 	color:#fefefe;
 	text-decoration: underline;
 }
@@ -1320,7 +1323,7 @@ p.para{
 	.wrap{
 		width:95%;
 	}
-	.h_search input[type="submit"] {
+	.h_search span[type="submit"] {
 		width: 10.33%;
 	}
 	.h_menu ul li a {

@@ -82,8 +82,8 @@
 			},
 			success: function(data) {
 			
-		}
-	})
+			}
+		})
 	})
 </script>
 </body>
