@@ -21,22 +21,28 @@ class AccountController extends Controller
         return view('admin.index');
     }
 
-    public function login() {
+    public function getLogin() {
         return view('admin.login');
     }
 
-    public function doLogin(Request $request) {
+    public function postLogin(Request $request) {
         $account = $request->input('account');
         $password = md5($request->input('password'));
 
         $admin = Admin::where('account', $account)->where('password', $password)->first();
 
         if ($admin) {
+            session(['adminIsLogin' => true]);
             return redirect('/admin');
         }
         else {
             return redirect('/admin/login')->with('message', '账号或密码错误');
         }
+    }
+
+    public function logout(Request $request) {
+        $request->session()->flush();
+        return redirect('/admin/login');
     }
 
     /**

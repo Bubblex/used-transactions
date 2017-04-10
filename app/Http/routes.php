@@ -62,12 +62,17 @@ Route::group(['prefix' => 'mine'], function() {
 
 // 后台
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
-    // 首页
-    Route::get('', 'AccountController@index');
-
     // 登录页
-    Route::get('login', 'AccountController@login');
+    Route::get('login', 'AccountController@getLogin');
 
     // 登录
-    Route::post('login', 'AccountController@doLogin');
+    Route::post('login', 'AccountController@postLogin');
+
+    Route::group(['middleware' => 'auth'], function() {
+        // 首页
+        Route::get('', 'AccountController@index');
+
+        // 登出
+        Route::get('logout', 'AccountController@logout');
+    });
 });
