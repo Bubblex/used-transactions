@@ -72,6 +72,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         // 首页
         Route::get('', 'AccountController@index');
 
+        // 个人资料页
+        Route::get('info', 'AccountController@getInfo');
+
         // 登出
         Route::get('logout', 'AccountController@logout');
     });

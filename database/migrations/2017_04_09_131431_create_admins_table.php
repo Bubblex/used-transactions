@@ -19,6 +19,9 @@ class CreateAdminsTable extends Migration
             // 账户
             $table->string('account', 12);
 
+            // 昵称
+            $table->string('nickname', 16);
+
             // 密码
             $table->string('password', 32);
 

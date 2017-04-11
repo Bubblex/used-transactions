@@ -11,20 +11,36 @@ use App\Models\Admin;
 
 class AccountController extends Controller
 {
+    protected $admin;
+
+    public function __construct(Request $request) {
+        $this->admin = $request->session()->get('admin');
+    }
     /**
-     * Display a listing of the resource.
+     * 展示首页
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.index');
+        return view('admin.index')->with('admin', $request->session()->get('admin'));
     }
 
+    /**
+     * 登录页
+     *
+     * @return void
+     */
     public function getLogin() {
         return view('admin.login');
     }
 
+    /**
+     * 登录
+     *
+     * @param Request $request
+     * @return void
+     */
     public function postLogin(Request $request) {
         $account = $request->input('account');
         $password = md5($request->input('password'));
@@ -32,7 +48,7 @@ class AccountController extends Controller
         $admin = Admin::where('account', $account)->where('password', $password)->first();
 
         if ($admin) {
-            session(['adminIsLogin' => true]);
+            session(['admin' => $admin]);
             return redirect('/admin');
         }
         else {
@@ -40,74 +56,18 @@ class AccountController extends Controller
         }
     }
 
+    public function getInfo() {
+        return view('admin.info')->with('admin', $this->admin);
+    }
+
+    /**
+     * 登出
+     *
+     * @param Request $request
+     * @return void
+     */
     public function logout(Request $request) {
         $request->session()->flush();
         return redirect('/admin/login');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

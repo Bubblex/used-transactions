@@ -6,14 +6,6 @@
   @include('master.header')
 @endsection
 
-@section('required-style')
-  <link rel="stylesheet" href="/adminlte/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="/adminlte/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="/adminlte/dist/css/skins/skin-blue.min.css">
-@endsection
-
 @section('head-after')
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -23,9 +15,7 @@
 
 @section('body-class', 'hold-transition skin-blue sidebar-mini')
 
-@section('required-script')
-  <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
-  <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
+@section('page-script')
   <script src="/adminlte/dist/js/app.min.js"></script>
 @endsection
 
@@ -42,8 +32,7 @@
       </h1>
       <ol class="breadcrumb">
         @section('breadcrumb')
-          <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-          <li class="active">Here</li>
+          <li><a href="/admin"><i class="fa fa-dashboard"></i>首页</a></li>
         @show
       </ol>
     </section>
