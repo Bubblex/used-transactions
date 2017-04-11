@@ -32,18 +32,27 @@
     </div>
     <div class="login-box-body">
       <p class="login-box-msg">登录后台管理系统</p>
-      @if (session('message'))
-        {{ session('message') }}
-      @endif
       <form action="/admin/login" method="POST">
         {!! csrf_field() !!}
-        <div class="form-group has-feedback">
+        @if (session('message'))
+          <div class="form-group has-feedback has-error">
+        @else
+          <div class="form-group has-feedback">
+        @endif
           <input name="account" type="text" class="form-control" placeholder="用户名">
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
-        <div class="form-group has-feedback">
+        @if (session('message'))
+          <div class="form-group has-feedback has-error">
+        @else
+          <div class="form-group has-feedback">
+        @endif
           <input name="password" type="password" class="form-control" placeholder="密码">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          @if (session('message'))
+          <span class="help-block">{{ session('message') }}</span>
+          @endif
+          <span class="help-block"></span>
         </div>
         <div class="row" style="margin-bottom: 15px;">
           <div class="col-xs-8">
@@ -64,32 +73,3 @@
     </div>
   </div>
 @endsection
-
-{{-- 
-@section('main')
-  @if (session('message'))
-    <div>{{ session('message') }}</div>
-  @endif
-
-  <form method="POST" action="/admin/login">
-    {!! csrf_field() !!}
-
-    <div>
-      用户名
-      <input type="text" name="account" value="{{ old('email') }}">
-    </div>
-
-    <div>
-      密码
-      <input type="password" name="password" id="password">
-    </div>
-
-    <div>
-      <input type="checkbox" name="remember"> Remember Me
-    </div>
-
-    <div>
-      <button type="submit">登录</button>
-    </div>
-  </form> --}}
-{{-- @endsection --}}

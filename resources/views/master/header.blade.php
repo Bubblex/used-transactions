@@ -90,13 +90,13 @@
             <span class="hidden-xs">{{ $admin->nickname }}</span>
           </a>
           <ul class="dropdown-menu">
-            <li class="user-header">
+            <li class="user-header" style="height: auto;">
               <img src="/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
               <p>
                 {{ $admin->nickname }}
               </p>
             </li>
-            <li class="user-body">
+            {{-- <li class="user-body">
               <div class="row">
                 <div class="col-xs-4 text-center">
                   <a href="#">Followers</a>
@@ -108,13 +108,13 @@
                   <a href="#">Friends</a>
                 </div>
               </div>
-            </li>
+            </li> --}}
             <li class="user-footer">
               <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <a href="#" class="btn btn-default btn-flat">个人资料</a>
               </div>
               <div class="pull-right">
-                <a href="/admin/logout" class="btn btn-default btn-flat">Sign out</a>
+                <a href="/admin/logout" class="btn btn-default btn-flat">退出登录</a>
               </div>
             </li>
           </ul>
