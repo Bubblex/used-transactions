@@ -2,7 +2,7 @@
   <section class="sidebar">
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="{{ $admin->avatar }}" class="img-circle" alt="用户头像">
       </div>
       <div class="pull-left info">
         <p>{{ $admin->nickname }}</p>

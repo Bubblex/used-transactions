@@ -15,7 +15,9 @@ class AdminsTableSeeder extends Seeder
         DB::table('admins')->insert([
             'account' => 'admin',
             'password' => md5('123456'),
-            'nickname' => '超级管理员'
+            'rolename' => '超级管理员',
+            'nickname' => 'Jarvis',
+            'avatar' => '/uploads/1493787701504345403.png'
         ]);
     }
 }

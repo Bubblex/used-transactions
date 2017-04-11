@@ -22,6 +22,12 @@ class CreateAdminsTable extends Migration
             // 昵称
             $table->string('nickname', 16);
 
+            // 角色
+            $table->string('rolename');
+
+            // 用户头像
+            $table->string('avatar');
+
             // 密码
             $table->string('password', 32);
 
