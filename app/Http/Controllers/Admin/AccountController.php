@@ -13,9 +13,23 @@ class AccountController extends Controller
 {
     protected $admin;
 
-    public function __construct(Request $request) {
-        $this->admin = $request->session()->get('admin');
+    /**
+     * 初始化管理员信息
+     */
+    public function __construct() {
+        $this->admin = session('admin');
     }
+
+    /**
+     * 处理修改个人资料的重定向
+     *
+     * @param [Object] $flash 重定向带有的session数据
+     * @return void
+     */
+    private function handleInfoUpdateFlash($flash) {
+        return redirect('/admin/info/update')->with($flash);
+    }
+
     /**
      * 展示首页
      *
@@ -23,7 +37,7 @@ class AccountController extends Controller
      */
     public function index(Request $request)
     {
-        return view('admin.index')->with('admin', $request->session()->get('admin'));
+        return view('admin.index')->with('admin', $this->admin);
     }
 
     /**
@@ -58,6 +72,43 @@ class AccountController extends Controller
 
     public function getInfo() {
         return view('admin.info')->with('admin', $this->admin);
+    }
+
+    public function updateInfo() {
+        return view('admin.info-update')->with('admin', $this->admin);
+    }
+
+    // TODO: 表单验证
+    // TODO: 修改密码后重新登录
+    public function postUpdateInfo(Request $request) {
+        $account = session('admin')->account;
+        $password = md5($request->input('password'));
+        $new_password = $request->input('new_password');
+        $confirm_password = $request->input('confirm_password');
+        $nickname = $request->input('nickname');
+
+        $admin = Admin::where('account', $account)->where('password', $password)->first();
+
+        if (!$admin) {
+            return $this->handleInfoUpdateFlash(['error_password' => '密码错误']);
+        }
+
+        if ($confirm_password != $new_password) {
+            return $this->handleInfoUpdateFLash(['error_inconsistent' => '两次密码不一致']);
+        }
+
+        $admin->nickname = $nickname;
+
+        if ($new_password && $confirm_password) {
+            $admin->password = md5($new_password);
+        }
+
+        $admin->save();
+
+        $this->admin = $admin;
+        session(['admin' => $admin]);
+
+        return redirect('/admin/info')->with('success', true);
     }
 
     /**

@@ -75,6 +75,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         // 个人资料页
         Route::get('info', 'AccountController@getInfo');
 
+        // 修改个人资料页
+        Route::get('info/update', 'AccountController@updateInfo');
+
+        // 修改个人资料
+        Route::post('info/update', 'AccountController@postUpdateInfo');
+
         // 登出
         Route::get('logout', 'AccountController@logout');
     });

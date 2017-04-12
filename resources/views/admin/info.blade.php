@@ -9,7 +9,13 @@
 
 @section('content')
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
+      @if (session('success'))
+        <div class="callout callout-success">
+          <h4>修改成功</h4>
+          <p>您已成功修改个人资料</p>
+        </div>
+      @endif
       <div class="box box-primary">
         <div class="box-body box-profile">
           <img class="profile-user-img img-responsive img-circle" src="{{ $admin->avatar }}" alt="用户头像">
@@ -26,7 +32,7 @@
               <b>Friends</b> <a class="pull-right">13,287</a>
             </li>
           </ul> --}}
-          <a href="#" class="btn btn-primary btn-block"><b>修改资料</b></a>
+          <a href="/admin/info/update" class="btn btn-primary btn-block"><b>修改资料</b></a>
         </div>
       </div>
     </div>
