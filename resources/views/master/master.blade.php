@@ -51,6 +51,7 @@
   @section('required-script')
     <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
     <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/adminlte/dist/js/app.min.js"></script>
   @show
 
   @section('vendor-script')

@@ -2,6 +2,8 @@
 
 @section('title', '校园二手交易网 - 后台管理系统')
 
+@section('body-class', 'hold-transition skin-blue sidebar-mini')
+
 @section('header')
   @include('master.header')
 @endsection
@@ -11,12 +13,6 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-@endsection
-
-@section('body-class', 'hold-transition skin-blue sidebar-mini')
-
-@section('page-script')
-  <script src="/adminlte/dist/js/app.min.js"></script>
 @endsection
 
 @section('sidebar')

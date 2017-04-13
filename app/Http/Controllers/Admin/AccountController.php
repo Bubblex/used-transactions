@@ -111,6 +111,10 @@ class AccountController extends Controller
         return redirect('/admin/info')->with('success', true);
     }
 
+    public function getUser() {
+        return view('admin.user')->with(['admin' => $this->admin]);
+    }
+
     /**
      * 登出
      *

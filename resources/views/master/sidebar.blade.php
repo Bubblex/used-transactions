@@ -30,8 +30,6 @@
         </a>
         <ul class="treeview-menu">
           <li class="active"><a href="/admin/info">个人资料</a></li>
-          <li><a href="#">用户管理</a></li>
-          <li><a href="#">商品管理</a></li>
         </ul>
       </li>
       <li class="treeview">
@@ -43,9 +41,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#">个人资料</a></li>
-          <li><a href="#">用户管理</a></li>
-          <li><a href="#">商品管理</a></li>
+          <li><a href="/admin/user">用户列表</a></li>
         </ul>
       </li>
       <li class="treeview">
