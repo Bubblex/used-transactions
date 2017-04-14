@@ -87,6 +87,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         // 获取用户列表
         Route::get('user/list', 'AccountController@getUserList');
 
+        // 修改用户状态
+        Route::post('user/status', 'AccountController@updateUserStatus');
+
         // 登出
         Route::get('logout', 'AccountController@logout');
     });

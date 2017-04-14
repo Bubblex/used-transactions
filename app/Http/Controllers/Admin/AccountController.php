@@ -132,6 +132,15 @@ class AccountController extends Controller
         return Datatables::eloquent(User::query())->make(true);
     }
 
+    public function updateUserStatus(Request $request) {
+        $user = User::where('id', $request->input('id'))->first();
+        $user->status = $request->input('status');
+        $user->save();
+        return response()->json([
+            'message' => '修改成功'
+        ]);
+    }
+
     /**
      * 登出
      *

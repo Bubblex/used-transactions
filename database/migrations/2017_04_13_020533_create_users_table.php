@@ -28,6 +28,12 @@ class CreateUsersTable extends Migration
             // 头像
             $table->string('avatar');
 
+            // 账号状态
+            // 0: 已删除
+            // 1: 正常
+            // 2: 禁用
+            $table->integer('status');
+
             // 时间戳
             $table->timestamps();
         });

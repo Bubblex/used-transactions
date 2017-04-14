@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="/adminlte/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/adminlte/dist/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="/adminlte/style/style.css">
   @show
 
   @section('vendor-style')

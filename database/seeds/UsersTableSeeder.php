@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
                 'account' => 'user_'.$i,
                 'password' => md5('123456'),
                 'nickname' => '用户_'.$i,
+                'status' => rand(1, 2),
                 'avatar' => '/uploads/1493787701504345403.png'
             ];
         }
