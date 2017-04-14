@@ -7,10 +7,18 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Yajra\Datatables\Facades\Datatables;
+
 use App\Models\Admin;
+use App\Models\User;
 
 class AccountController extends Controller
 {
+    private $defaultOptions = [
+        'page' => '1',
+        'pageSize' => '10'
+    ];
+
     protected $admin;
 
     /**
@@ -20,12 +28,6 @@ class AccountController extends Controller
         $this->admin = session('admin');
     }
 
-    /**
-     * 处理修改个人资料的重定向
-     *
-     * @param [Object] $flash 重定向带有的session数据
-     * @return void
-     */
     private function handleInfoUpdateFlash($flash) {
         return redirect('/admin/info/update')->with($flash);
     }
@@ -78,8 +80,14 @@ class AccountController extends Controller
         return view('admin.info-update')->with('admin', $this->admin);
     }
 
-    // TODO: 表单验证
-    // TODO: 修改密码后重新登录
+    /**
+     * 修改用户信息
+     *
+     * TODO: 表单验证
+     * TODO: 修改密码后重新登录
+     * @param Request $request
+     * @return void
+     */
     public function postUpdateInfo(Request $request) {
         $account = session('admin')->account;
         $password = md5($request->input('password'));
@@ -111,8 +119,17 @@ class AccountController extends Controller
         return redirect('/admin/info')->with('success', true);
     }
 
-    public function getUser() {
+    /**
+     * 用户信息页
+     *
+     * @return void
+     */
+    public function userPage(Request $request) {
         return view('admin.user')->with(['admin' => $this->admin]);
+    }
+
+    public function getUserList() {
+        return Datatables::eloquent(User::query())->make(true);
     }
 
     /**

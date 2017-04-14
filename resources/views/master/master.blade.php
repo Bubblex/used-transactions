@@ -30,34 +30,36 @@
   @show
 </head>
 <body class="@yield('body-class')">
-  @section('body-before')
-  @show
+  <div class="wrapper">
+    @section('body-before')
+    @show
 
-  @section('header')
-  @show
+    @section('header')
+    @show
 
-  @section('sidebar')
-  @show
+    @section('sidebar')
+    @show
 
-  @section('main')
-  @show
+    @section('main')
+    @show
 
-  @section('footer')
-  @show
+    @section('footer')
+    @show
 
-  @section('body-after')
-  @show
+    @section('body-after')
+    @show
 
-  @section('required-script')
-    <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/adminlte/dist/js/app.min.js"></script>
-  @show
+    @section('required-script')
+      <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+      <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
+      <script src="/adminlte/dist/js/app.min.js"></script>
+    @show
 
-  @section('vendor-script')
-  @show
+    @section('vendor-script')
+    @show
 
-  @section('page-script')
-  @show
+    @section('page-script')
+    @show
+  </div>
 </body>
 </html>
