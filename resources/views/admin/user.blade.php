@@ -100,7 +100,7 @@
               template += '<a href="javascript:" onclick="updateUserStatus(' + data + ', 1)">启用</a>'
             }
 
-            template += '<a href="#">查看</a>'
+            template += '<a href="/admin/user/detail?id=' + data + '">查看</a>'
             template += '<a href="#">编辑</a>'
 
             return template

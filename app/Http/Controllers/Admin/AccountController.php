@@ -141,6 +141,23 @@ class AccountController extends Controller
         ]);
     }
 
+    public function getUserDetail(Request $request) {
+        $user = User::where('id', $request->input('id'))->first();
+        $status = $user->status;
+        
+        if ($status == 1) {
+            $user->status = '正常';
+        }
+        else if ($status == 2) {
+            $user->status = '已禁用';
+        }
+
+        return view('admin.user-detail')->with([
+            'user' => $user,
+            'admin' => $this->admin
+        ]);
+    }
+
     /**
      * 登出
      *
