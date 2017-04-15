@@ -1,5 +1,7 @@
 <?php
 
+
+
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
@@ -8,6 +10,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Yajra\Datatables\Facades\Datatables;
+use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Models\Admin;
 use App\Models\User;
@@ -179,6 +182,7 @@ class AccountController extends Controller
         $nickname = $request->input('nickname');
         $telephone = $request->input('telephone');
         $status = $request->input('status');
+        $avatar = $request->file('avatar');
         $message = [];
 
         if (!$nickname) {
@@ -194,6 +198,12 @@ class AccountController extends Controller
         }
 
         $user = User::where('id', $id)->first();
+        $filePath = 'uploads/'.time().'.'.$avatar->getClientOriginalExtension();
+
+        if ($request->hasFile('avatar')) {
+            Image::make($avatar)->save($filePath);
+            $user->avatar = '/'.$filePath;
+        }
 
         $user->nickname = $nickname;
         $user->telephone = $telephone;

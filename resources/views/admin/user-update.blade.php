@@ -19,7 +19,7 @@
   <div class="box">
     <div class="box-body">
       <div style="width: 50%" class="tab-pane" id="settings">
-        <form method="POST" action="/admin/user/update" class="form-horizontal">
+        <form method="POST" action="/admin/user/update" class="form-horizontal" enctype="multipart/form-data">
           {!! csrf_field() !!}
           <input type='hidden' name="id" value="{{ $user->id }}" />
           <div class="form-group">
@@ -84,7 +84,7 @@
           <div class="form-group">
             <label for="inputSkills" class="col-sm-2 control-label">头像：</label>
             <div class="col-sm-10">
-              <input type="file">
+              <input type="file" name="avatar" accept="image/*">
               <p class="help-block">请上传分辨率为300x300的图片</p>
             </div>
           </div>

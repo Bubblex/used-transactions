@@ -11,6 +11,7 @@
 |
 */
 
+
 // 首页
 Route::get('/', function () {
     return view('mall.home.index');
