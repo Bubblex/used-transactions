@@ -13,7 +13,7 @@
     <div class="box-header with-border">
       <h3 class="box-title">修改个人资料</h3>
     </div>
-    <form method="POST" action="/admin/info/update">
+    <form method="POST" action="/admin/info/update" enctype="multipart/form-data">
       {!! csrf_field() !!}
       <div class="box-body">
         <div class="form-group">
@@ -56,7 +56,7 @@
         </div>
         <div class="form-group">
           <label>上传头像</label>
-          <input type="file">
+          <input type="file" name="avatar" accept="image/*">
           <p class="help-block">请上传分辨率为300x300的图片</p>
         </div>
       </div>

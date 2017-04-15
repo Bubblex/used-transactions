@@ -97,6 +97,7 @@ class AccountController extends Controller
         $new_password = $request->input('new_password');
         $confirm_password = $request->input('confirm_password');
         $nickname = $request->input('nickname');
+        $avatar = $request->file('avatar');
 
         $admin = Admin::where('account', $account)->where('password', $password)->first();
 
@@ -109,6 +110,13 @@ class AccountController extends Controller
         }
 
         $admin->nickname = $nickname;
+
+        $filePath = 'uploads/'.time().'.'.$avatar->getClientOriginalExtension();
+
+        if ($request->hasFile('avatar')) {
+            Image::make($avatar)->save($filePath);
+            $admin->avatar = '/'.$filePath;
+        }
 
         if ($new_password && $confirm_password) {
             $admin->password = md5($new_password);
