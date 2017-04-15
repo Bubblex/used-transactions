@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Models\User;
+
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -11,20 +13,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $users = [];
-
-        for ($i = 1; $i <= 100; $i++) {
-            $users[] = [
-                'account' => 'user_'.$i,
-                'password' => md5('123456'),
-                'nickname' => '用户_'.$i,
-                'status' => rand(1, 2),
-                'avatar' => '/uploads/1493787701504345403.png',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
-            ];
-        }
-        //
-        DB::table('users')->insert($users);
+        $users = factory(User::class, 50)->create();
     }
 }

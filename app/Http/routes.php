@@ -93,6 +93,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         // 用户详情
         Route::get('user/detail', 'AccountController@getUserDetail');
 
+        // 修改用户资料页
+        Route::get('user/update', 'AccountController@updateUser');
+
+        // 修改用户资料
+        Route::post('user/update', 'AccountController@putUpdateuser');
+
         // 登出
         Route::get('logout', 'AccountController@logout');
     });

@@ -101,7 +101,7 @@
             }
 
             template += '<a href="/admin/user/detail?id=' + data + '">查看</a>'
-            template += '<a href="#">编辑</a>'
+            template += '<a href="/admin/user/update?id=' + data + '">编辑</a>'
 
             return template
           }

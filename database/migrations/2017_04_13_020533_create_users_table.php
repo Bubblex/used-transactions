@@ -28,6 +28,9 @@ class CreateUsersTable extends Migration
             // 头像
             $table->string('avatar');
 
+            // 联系方式
+            $table->string('telephone');
+
             // 账号状态
             // 0: 已删除
             // 1: 正常

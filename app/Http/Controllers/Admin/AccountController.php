@@ -158,6 +158,57 @@ class AccountController extends Controller
         ]);
     }
 
+    public function updateUser(Request $request) {
+        $user = User::where('id', $request->input('id'))->first();
+        
+        return view("admin.user-update")->with([
+            'user' => $user,
+            'admin' => $this->admin
+        ]);
+    }
+
+    /**
+     * 修改用户资料
+     *
+     * TODO: 表单验证
+     * @param Request $request
+     * @return void
+     */
+    public function putUpdateUser(Request $request) {
+        $id = $request->input('id');
+        $nickname = $request->input('nickname');
+        $telephone = $request->input('telephone');
+        $status = $request->input('status');
+        $message = [];
+
+        if (!$nickname) {
+            $message['nickname'] = '请填写昵称';
+        }
+        
+        if (!$telephone) {
+            $message['telephone'] = '请填写联系方式';
+        }
+
+        if ($message) {
+            return $this->handleUpdateUserMessage($id, $message);
+        }
+
+        $user = User::where('id', $id)->first();
+
+        $user->nickname = $nickname;
+        $user->telephone = $telephone;
+        $user->status = $status;
+        $user->save();
+
+        return $this->handleUpdateUserMessage($id, [
+            'success' => '修改成功'
+        ]);
+    }
+
+    private function handleUpdateUserMessage($id, $message) {
+        return redirect('/admin/user/update?id='.$id)->with($message);
+    }
+
     /**
      * 登出
      *

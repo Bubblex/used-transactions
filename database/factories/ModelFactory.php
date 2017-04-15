@@ -22,8 +22,18 @@ use App\Models\User;
 //     ];
 // });
 
-// $factory->define(User::class, function (Fakter\Generator $faker) {
-//     return [
-//         'account': 
-//     ];
-// });
+$factory->define(User::class, function () {
+    $faker = Faker\Factory::create('zh_CN');
+    $initialTime = date('Y-m-d H:i:s', $faker->unixTime($max = 'now'));
+    
+    return [
+        'account' => $faker->ean8,
+        'nickname' => $faker->name,
+        'password' => md5('123456'),
+        'telephone' => $faker->phoneNumber,
+        'avatar' => '/uploads/1493787701504345403.png',
+        'status' => rand(1, 2),
+        'created_at' => $initialTime,
+        'updated_at' => $initialTime
+    ];
+});

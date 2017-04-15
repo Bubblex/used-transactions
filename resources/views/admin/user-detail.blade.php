@@ -18,6 +18,10 @@
             <p class="form-control-static">{{ $user->id }}</p>
           </div>
           <div class="form-group">
+            <label for="inputName" class="col-sm-3 control-label">账户：</label>
+            <p class="form-control-static">{{ $user->account }}</p>
+          </div>
+          <div class="form-group">
             <label for="inputName" class="col-sm-3 control-label">昵称：</label>
             <p class="form-control-static">{{ $user->nickname }}</p>
           </div>
@@ -30,13 +34,17 @@
             <p class="form-control-static">{{ $user->status }}</p>
           </div>
           <div class="form-group">
+            <label for="inputName" class="col-sm-3 control-label">联系方式：</label>
+            <p class="form-control-static">{{ $user->telephone }}</p>
+          </div>
+          <div class="form-group">
             <label for="inputName" class="col-sm-3 control-label">注册时间：</label>
             <p class="form-control-static">{{ $user->created_at }}</p>
           </div>
           <div class="form-group">
             <div class="col-sm-offset-3 col-sm-10" style="padding-left: 0">
-              <button type="submit" class="btn btn-danger" style="margin-right: 8px">编辑</button>
-              <button type="submit" class="btn btn-danger">返回</button>
+              <a href="/admin/user/update?id={{ $user->id }}" class="btn btn-primary" style="margin-right: 8px">编辑</a>
+              <a href="/admin/user" class="btn btn-primary">返回</a>
             </div>
           </div>
         </form>
