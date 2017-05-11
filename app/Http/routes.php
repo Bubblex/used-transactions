@@ -100,6 +100,21 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         // 修改用户资料
         Route::post('user/update', 'AccountController@putUpdateuser');
 
+        // 商品列表
+        Route::get('goods', 'AccountController@goodsPage');
+
+        // 商品详情
+        Route::get('goods/detail', 'AccountController@goodsDetail');
+
+        // 修改商品页
+        Route::get('goods/update', 'AccountController@goodsUpdate');
+
+        // 修改商品
+        Route::post('goods/update', 'AccountController@postGoodsUpdate');
+
+        // 获取商品列表
+        Route::get('goods/list', 'AccountController@getGoodsList');
+
         // 登出
         Route::get('logout', 'AccountController@logout');
     });

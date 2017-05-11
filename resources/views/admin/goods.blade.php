@@ -1,8 +1,8 @@
 @extends('master.dashboard')
 
-@section('page-header', '用户列表')
+@section('page-header', '商品列表')
 
-@section('user-manage-class', 'active')
+@section('goods-manage-class', 'active')
 
 @section('vendor-style')
   @parent
@@ -32,12 +32,12 @@
       })
     }
 
-    var userStatusMap = {
+    var goodsStatusMap = {
       1: '正常',
       2: '已禁用'
     }
 
-    var userTable = $('#users-table').DataTable({
+    var userTable = $('#goods-table').DataTable({
       info: false,
       paging: true,
       ordering: false,
@@ -61,32 +61,32 @@
         zeroRecords: '搜索不到数据'
       },
       stateSave: true,
-      ajax: '/admin/user/list',
+      ajax: '/admin/goods/list',
       columns: [
         {
           title: '编号',
           data: 'id'
         },
         {
-          title: '账户',
-          data: 'account'
-        },
-        {
-          title: '昵称',
-          data: 'nickname'
-        },
-        {
-          title: '头像',
-          data: 'avatar',
+          title: '发布人',
+          data: 'user',
           render: function(data) {
-            return '<img src="' + data + '" width="80px">'
+            return data.nickname
           }
+        },
+        {
+          title: '商品名称',
+          data: 'name'
+        },
+        {
+          title: '价格',
+          data: 'price',
         },
         {
           title: '状态',
           data: 'status',
           render: function(data) {
-            return userStatusMap[data]
+            return goodsStatusMap[data]
           }
         },
         {
@@ -102,7 +102,7 @@
               template += '<a href="javascript:" onclick="updateUserStatus(' + data + ', 1)">启用</a>'
             }
 
-            template += '<a href="/admin/user/detail?id=' + data + '">查看</a>'
+            template += '<a href="/admin/goods/detail?id=' + data + '">查看</a>'
             template += '<a href="/admin/user/update?id=' + data + '">编辑</a>'
 
             return template
@@ -115,13 +115,14 @@
 
 @section('breadcrumb')
   @parent
-  <li class="active">用户列表</li>
+  <li class="active">商品列表</li>
 @endsection
 
 @section('content')
   <div class="box">
     <div class="box-body">
-      <table id="users-table" class="table table-bordered table-hover"></table>
+      <table id="goods-table" class="table table-bordered table-hover"></table>
     </div>
   </div>
 @endsection
+

@@ -2,6 +2,8 @@
 
 @section('page-header', '用户详情')
 
+@section('user-manage-class', 'active')
+
 @section('breadcrumb')
   @parent
   <li><a href="/admin">用户列表</a></li>

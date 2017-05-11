@@ -14,6 +14,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\Good;
 
 class AccountController extends Controller
 {
@@ -225,6 +226,51 @@ class AccountController extends Controller
 
     private function handleUpdateUserMessage($id, $message) {
         return redirect('/admin/user/update?id='.$id)->with($message);
+    }
+
+    /**
+     * 商品列表页
+     *
+     * @return void
+     */
+    public function goodsPage() {
+        return view('admin.goods')->with([
+            'admin' => $this->admin
+        ]);
+    }
+
+    /**
+     * 获取商品列表接口
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function getGoodsList(Request $request) {
+        return Datatables::eloquent(Good::with('goodsType')->with(['user' => function($query) {
+            $query->select('id', 'account', 'nickname');
+        }]))->make(true);
+    }
+
+    public function goodsDetail(Request $request) {
+        $goods = Good::with(['user' => function($query) {
+            $query->select('id', 'account', 'nickname');
+        }, 'type' => function($query) {
+            $query->select('id', 'name');
+        }])->find($request->id);
+
+        $status = $goods->status;
+        
+        if ($status == 1) {
+            $goods->status = '正常';
+        }
+        else if ($status == 2) {
+            $goods->status = '已禁用';
+        }
+
+        return view("admin.goods-detail")->with([
+            'goods' => $goods,
+            'admin' => $this->admin
+        ]);
     }
 
     /**

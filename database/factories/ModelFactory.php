@@ -12,15 +12,28 @@
 */
 
 use App\Models\User;
+use App\Models\Good;
 
-// $factory->define(App\User::class, function (Faker\Generator $faker) {
-//     return [
-//         'name' => $faker->name,
-//         'email' => $faker->safeEmail,
-//         'password' => bcrypt(str_random(10)),
-//         'remember_token' => str_random(10),
-//     ];
-// });
+$factory->define(Good::class, function () {
+    $faker = Faker\Factory::create('zh_CN');
+    $initialTime = date('Y-m-d H:i:s', $faker->unixTime($max = 'now'));
+
+    return [
+        'user_id' => rand(1, 50),
+        'goods_type_id' => rand(1, 3),
+        'name' => $faker->name,
+        'summary' => $faker->word,
+        'price' => $faker->randomFloat,
+        'concat_telephone' => $faker->phoneNumber,
+        'concat_name' => $faker->name,
+        'detail' => $faker->text,
+        'specification' => $faker->text,
+        'use_situation' => $faker->text,
+        'image' => '/uploads/1493787701504345403.png',
+        'created_at' => $initialTime,
+        'updated_at' => $initialTime
+    ];
+});
 
 $factory->define(User::class, function () {
     $faker = Faker\Factory::create('zh_CN');

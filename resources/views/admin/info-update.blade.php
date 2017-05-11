@@ -2,6 +2,8 @@
 
 @section('page-header', '修改个人资料')
 
+@section('user-info-class', 'active')
+
 @section('breadcrumb')
   @parent
   <li><a href="/admin/info">个人资料</a></li>

@@ -11,19 +11,19 @@
     </div>
     <ul class="sidebar-menu">
       <li class="header">后台管理系统</li>
-      <li>
+      <li class="@yield('user-info-class')">
         <a href="/admin/info">
           <i class="fa fa-link"></i>
           <span>个人信息</span>
         </a>
       </li>
-      <li>
+      <li class="@yield('user-manage-class')">
         <a href="/admin/user">
           <i class="fa fa-link"></i>
           用户管理
         </a>
       </li>
-      <li>
+      <li class="@yield('goods-manage-class')">
         <a href="/admin/goods">
           <i class="fa fa-link"></i>
           商品管理
