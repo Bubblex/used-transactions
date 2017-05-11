@@ -1,8 +1,8 @@
 @extends('master.dashboard')
 
-@section('page-header', '商品列表')
+@section('page-header', '商品分类列表')
 
-@section('goods-manage-class', 'active')
+@section('goods-types-manage-class', 'active')
 
 @section('vendor-style')
   @parent
@@ -17,9 +17,9 @@
 
 @section('page-script')
   <script>
-    function updateGoodsStatus(id, status) {
+    function deleteType(id) {
       $.ajax({
-        url: '/admin/goods/disable',
+        url: '/admin/user/status',
         type: 'post',
         data: {
           _token: '{{ csrf_token() }}',
@@ -42,7 +42,6 @@
       paging: true,
       ordering: false,
       autoWidth: false,
-      searching: false,
       lengthChange: false,
       pagingType: 'full_numbers',
       serverSide: true,
@@ -61,53 +60,16 @@
         zeroRecords: '搜索不到数据'
       },
       stateSave: true,
-      ajax: '/admin/goods/list',
+      ajax: '/admin/goods-types/list',
       columns: [
         {
           title: '编号',
           data: 'id'
         },
         {
-          title: '发布人',
-          data: 'user',
-          render: function(data) {
-            return data.nickname
-          }
+          title: '名称',
+          data: 'name',
         },
-        {
-          title: '商品名称',
-          data: 'name'
-        },
-        {
-          title: '价格',
-          data: 'price',
-        },
-        {
-          title: '状态',
-          data: 'status',
-          render: function(data) {
-            return goodsStatusMap[data]
-          }
-        },
-        {
-          title: '操作',
-          data: 'id',
-          render: function(data, type, full) {
-            var template = '<div class="table-options">'
-
-            if (full.status === 1) {
-              template += '<a href="javascript:" onclick="updateGoodsStatus(' + data + ', 2)">禁用</a>'
-            }
-            else if (full.status === 2) {
-              template += '<a href="javascript:" onclick="updateGoodsStatus(' + data + ', 1)">启用</a>'
-            }
-
-            template += '<a href="/admin/goods/detail?id=' + data + '">查看</a>'
-            template += '<a href="/admin/user/update?id=' + data + '">编辑</a>'
-
-            return template
-          }
-        }
       ]
   });
   </script>
@@ -115,7 +77,7 @@
 
 @section('breadcrumb')
   @parent
-  <li class="active">商品列表</li>
+  <li class="active">商品分类列表</li>
 @endsection
 
 @section('content')
@@ -125,4 +87,3 @@
     </div>
   </div>
 @endsection
-

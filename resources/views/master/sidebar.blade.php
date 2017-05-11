@@ -29,6 +29,12 @@
           商品管理
         </a>
       </li>
+      <li class="@yield('goods-types-manage-class')">
+        <a href="/admin/goods-types">
+          <i class="fa fa-link"></i>
+          商品分类
+        </a>
+      </li>
     </ul>
   </section>
 </aside>

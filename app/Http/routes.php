@@ -100,11 +100,20 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         // 修改用户资料
         Route::post('user/update', 'AccountController@putUpdateuser');
 
+        // 商品分类列表页
+        Route::get('goods-types', 'AccountController@goodsTypesPage');
+
+        // 商品分类列表
+        Route::get('goods-types/list', 'AccountController@goodsTypes');
+
         // 商品列表
         Route::get('goods', 'AccountController@goodsPage');
 
         // 商品详情
         Route::get('goods/detail', 'AccountController@goodsDetail');
+
+        // 禁用 / 启用商品
+        Route::post('goods/disable', 'AccountController@disableGoods');
 
         // 修改商品页
         Route::get('goods/update', 'AccountController@goodsUpdate');

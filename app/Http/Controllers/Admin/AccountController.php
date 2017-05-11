@@ -15,6 +15,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use App\Models\Admin;
 use App\Models\User;
 use App\Models\Good;
+use App\Models\GoodType;
 
 class AccountController extends Controller
 {
@@ -229,6 +230,27 @@ class AccountController extends Controller
     }
 
     /**
+     * 商品分类列表页
+     *
+     * @return void
+     */
+    public function goodsTypesPage() {
+        return view('admin.goods-types')->with([
+            'admin' => $this->admin
+        ]);
+    }
+
+    /**
+     * 获取商品类型接口
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function goodsTypes(Request $request) {
+        return Datatables::eloquent(GoodType::query())->make(true);
+    }
+
+    /**
      * 商品列表页
      *
      * @return void
@@ -246,12 +268,72 @@ class AccountController extends Controller
      * @return void
      */
     public function getGoodsList(Request $request) {
-        return Datatables::eloquent(Good::with('goodsType')->with(['user' => function($query) {
+        return Datatables::eloquent(Good::with('type')->with(['user' => function($query) {
             $query->select('id', 'account', 'nickname');
         }]))->make(true);
     }
 
+    /**
+     * 禁用 / 启用商品
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function disableGoods(Request $request) {
+        $id = $request->id;
+        $status = $request->status;
+
+        $goods = Good::find($id);
+
+        $goods->status = $status;
+        
+        if ($goods->save()) {
+            return response()->json([
+                'message' => '修改成功'
+            ]);
+        }
+        else {
+            return response()->json([
+                'message' => '修改失败'
+            ]);
+        }
+    }
+
+    /**
+     * 商品详情页
+     *
+     * @param Request $request
+     * @return void
+     */
     public function goodsDetail(Request $request) {
+        $goods = Good::with(['user' => function($query) {
+            $query->select('id', 'account', 'nickname');
+        }, 'type' => function($query) {
+            $query->select('id', 'name');
+        }])->find($request->id);
+
+        $status = $goods->status;
+        
+        if ($status == 1) {
+            $goods->status = '正常';
+        }
+        else if ($status == 2) {
+            $goods->status = '已禁用';
+        }
+
+        return view("admin.goods-detail")->with([
+            'goods' => $goods,
+            'admin' => $this->admin
+        ]);
+    }
+
+    /**
+     * 修改商品页
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function goodsUpdate(Request $request) {
         $goods = Good::with(['user' => function($query) {
             $query->select('id', 'account', 'nickname');
         }, 'type' => function($query) {
