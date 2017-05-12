@@ -13,9 +13,7 @@
 
 
 // 首页
-Route::get('/', function () {
-    return view('mall.home.index');
-});
+Route::get('/', 'Mall\IndexController@indexPage');
 
 // 账户中心
 Route::group(['prefix' => 'account', 'namespace' => 'Mall'], function() {

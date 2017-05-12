@@ -67,19 +67,7 @@ $(function() {
 	    			<span id="searchbtn" type="submit"></span>
 	    		</form>
 			</div>
-
-			<div class="h_login">
-				<a class="add_a" href="/account/register">注册</a>
-				<a class="add_a" href="/account/login">登录</a>
-			</div>
-
-			<div class="logined">
-				<a href="javascript:">
-					<img src="/resource/image/logo.png">
-					<span>昵称啊啊啊</span>
-					<img class="setting" src="/resource/image/setting.png" onClick="location.href='/mine/info'">
-				</a>
-			</div>
+			@include('master.header-account')
 		</div>
 	</div>
 </div>
@@ -111,18 +99,13 @@ $(function() {
 
 <!-- BEGIN swiper -->
 	<div id="da-slider" class="da-slider">
-		<div class="da-slide">
-			<h2>商品名称</h2>
-			<p>商品简介</p>
-			<a href="/goods/detail" class="da-link">查看详情</a>
-			<div class="da-img"><img src="/resource/image/slider1.png" alt="image01" /></div>
-		</div>
-		<div class="da-slide">
-			<h2>Easy management</h2>
-			<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-			<a href="details.html" class="da-link">查看详情</a>
-			<div class="da-img"><img src="/resource/image/slider2.png" alt="image01" /></div>
-		</div>
+		@foreach($banners as $banner)
+			<div class="da-slide">
+				<h2>{{ $banner->title }}</h2>
+				<a href="{{ $banner->link }}" class="da-link">查看详情</a>
+				<div class="da-img"><img src="{{ $banner->image }}" alt="{{ $banner->title }}" /></div>
+			</div>
+		@endforeach
 		<nav class="da-arrows">
 			<span class="da-arrows-prev"></span>
 			<span class="da-arrows-next"></span>
