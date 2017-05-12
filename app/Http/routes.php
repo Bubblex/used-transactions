@@ -25,9 +25,7 @@ Route::group(['prefix' => 'account', 'namespace' => 'Mall'], function() {
     });
 
     // 注册
-    Route::get('register', function() {
-        return view('mall.account.register');
-    });
+    Route::get('register', 'MallController@registerPage');
 
     // 提交注册
     Route::post('register', 'MallController@postRegister');

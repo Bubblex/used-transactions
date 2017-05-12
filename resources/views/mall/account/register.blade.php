@@ -72,16 +72,26 @@
 			return
 		}
 		$.ajax({
-			url: "",
+			url: "/account/register",
 			type: "POST",
 			data: {
 				account: account,
 				nickname: nickname,
-				pwd: pwd,
-				confrimpwd: confrimpwd
+				password: pwd,
+				confrim_password: confrimpwd,
+				_token: '{{ csrf_token() }}'
 			},
 			success: function(data) {
-			
+				if (data.status === 1) {
+					alert('注册成功，请登录')
+					window.location.href = '/account/login'
+				}
+				else if (data.status === 2) {
+					alert('注册失败，请稍后再试');
+				}
+				else if (data.status === 3) {
+					alert('该用户已注册');
+				}
 			}
 		})
 	})
