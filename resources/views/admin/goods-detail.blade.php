@@ -69,7 +69,6 @@
           </div>
           <div class="form-group">
             <div class="col-sm-offset-3 col-sm-10" style="padding-left: 0">
-              <a href="/admin/goods/update?id={{ $goods->id }}" class="btn btn-primary" style="margin-right: 8px">编辑</a>
               <a href="/admin/goods" class="btn btn-primary">返回</a>
             </div>
           </div>

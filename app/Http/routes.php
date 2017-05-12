@@ -124,6 +124,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         // 获取商品列表
         Route::get('goods/list', 'AccountController@getGoodsList');
 
+        // 首页 banner 图管理
+        Route::get('banner', 'AccountController@bannerPage');
+
+        // 获取 banner 列表
+        Route::get('banner/list', 'AccountController@getBannerList');
+
+        // 添加 banner 页
+        Route::get('banner/add', 'AccountController@addBannerPage');
+
+        // 添加 banner
+        Route::post('banner/add', 'AccountController@addBanner');
+
         // 登出
         Route::get('logout', 'AccountController@logout');
     });

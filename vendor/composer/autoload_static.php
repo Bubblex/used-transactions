@@ -333,6 +333,7 @@ class ComposerStaticInite99a8f0a379f44b73c5fabe858b0014d
         'AddForeignToGoods' => __DIR__ . '/../..' . '/database/migrations/2017_05_11_062729_add_foreign_to_goods.php',
         'AdminsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminsTableSeeder.php',
         'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_11_062608_create_admins_table.php',
+        'CreateBannersTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_11_132024_create_banners_table.php',
         'CreateGoodTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_11_062702_create_good_types_table.php',
         'CreateGoodsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_11_062641_create_goods_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_11_062713_create_users_table.php',

@@ -35,6 +35,12 @@
           商品分类
         </a>
       </li>
+      <li class="@yield('banner-manage-class')">
+        <a href="/admin/banner">
+          <i class="fa fa-link"></i>
+          首页图片管理
+        </a>
+      </li>
     </ul>
   </section>
 </aside>

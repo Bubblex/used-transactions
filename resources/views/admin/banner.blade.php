@@ -1,8 +1,8 @@
 @extends('master.dashboard')
 
-@section('page-header', '商品列表')
+@section('page-header', 'banner 图片列表')
 
-@section('goods-manage-class', 'active')
+@section('banner-manage-class', 'active')
 
 @section('vendor-style')
   @parent
@@ -47,7 +47,7 @@
       pagingType: 'full_numbers',
       serverSide: true,
       pageLength: 10,
-      searching: true,
+      searching: false,
       language: {
         paginate: {
           first: '第一页',
@@ -61,33 +61,23 @@
         zeroRecords: '搜索不到数据'
       },
       stateSave: true,
-      ajax: '/admin/goods/list',
+      ajax: '/admin/banner/list',
       columns: [
         {
           title: '编号',
           data: 'id'
         },
         {
-          title: '发布人',
-          data: 'user',
-          render: function(data) {
-            return data.nickname
-          }
+          title: '标题',
+          data: 'title',
         },
         {
-          title: '商品名称',
-          data: 'name'
+          title: '图片地址',
+          data: 'image'
         },
         {
-          title: '价格',
-          data: 'price',
-        },
-        {
-          title: '状态',
-          data: 'status',
-          render: function(data) {
-            return goodsStatusMap[data]
-          }
+          title: '链接地址',
+          data: 'link',
         },
         {
           title: '操作',
@@ -120,6 +110,7 @@
 @section('content')
   <div class="box">
     <div class="box-body">
+      <a href="/admin/banner/add" class="btn btn-primary">添加</a>
       <table id="goods-table" class="table table-bordered table-hover"></table>
     </div>
   </div>

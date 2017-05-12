@@ -9,6 +9,7 @@ return array(
     'AddForeignToGoods' => $baseDir . '/database/migrations/2017_05_11_062729_add_foreign_to_goods.php',
     'AdminsTableSeeder' => $baseDir . '/database/seeds/AdminsTableSeeder.php',
     'CreateAdminsTable' => $baseDir . '/database/migrations/2017_05_11_062608_create_admins_table.php',
+    'CreateBannersTable' => $baseDir . '/database/migrations/2017_05_11_132024_create_banners_table.php',
     'CreateGoodTypesTable' => $baseDir . '/database/migrations/2017_05_11_062702_create_good_types_table.php',
     'CreateGoodsTable' => $baseDir . '/database/migrations/2017_05_11_062641_create_goods_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2017_05_11_062713_create_users_table.php',

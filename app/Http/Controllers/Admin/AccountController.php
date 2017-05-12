@@ -16,6 +16,7 @@ use App\Models\Admin;
 use App\Models\User;
 use App\Models\Good;
 use App\Models\GoodType;
+use App\Models\Banner;
 
 class AccountController extends Controller
 {
@@ -349,10 +350,85 @@ class AccountController extends Controller
             $goods->status = '已禁用';
         }
 
-        return view("admin.goods-detail")->with([
+        return view("admin.goods-update")->with([
             'goods' => $goods,
             'admin' => $this->admin
         ]);
+    }
+
+    /**
+     * banner 管理页
+     *
+     * @return void
+     */
+    public function bannerPage() {
+        return view('admin.banner')->with([
+            'admin' => $this->admin
+        ]);
+    }
+
+    /**
+     * 获取 banner 列表接口
+     *
+     * @return void
+     */
+    public function getBannerList() {
+        return Datatables::eloquent(Banner::query())->make(true);
+    }
+
+    /**
+     * 添加 banner 页
+     *
+     * @return void
+     */
+    public function addBannerPage() {
+        return view('admin.banner-add')->with([
+            'admin' => $this->admin
+        ]);
+    }
+
+    private function handleAddBannerMessage($message) {
+        return redirect('/admin/banner/add')->with($message)->withInput();
+    }
+
+    public function addBanner(Request $request) {
+        $title = $request->title;
+        $link = $request->link;
+        $image = $request->file('image');
+        $message = [];
+
+        if (!$title) {
+            $message['title'] = '请填写标题';
+        }
+        
+        if (!$link) {
+            $message['link'] = '请填写链接';
+        }
+
+        if (!$image) {
+            $message['image'] = '请上传一张图片';
+        }
+
+        if ($message) {
+            return $this->handleAddBannerMessage($message);
+        }
+
+        // $user = User::where('id', $id)->first();
+        // $filePath = 'uploads/'.time().'.'.$avatar->getClientOriginalExtension();
+
+        // if ($request->hasFile('avatar')) {
+        //     Image::make($avatar)->save($filePath);
+        //     $user->avatar = '/'.$filePath;
+        // }
+
+        // $user->nickname = $nickname;
+        // $user->telephone = $telephone;
+        // $user->status = $status;
+        // $user->save();
+
+        // return $this->handleUpdateUserMessage($id, [
+        //     'success' => '修改成功'
+        // ]);
     }
 
     /**
