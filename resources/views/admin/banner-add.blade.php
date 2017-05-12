@@ -22,41 +22,45 @@
       <div style="width: 50%" class="tab-pane" id="settings">
         <form method="POST" action="/admin/banner/add" class="form-horizontal" enctype="multipart/form-data">
           {!! csrf_field() !!}
-          @if (session('title'))
+          @if (session('titleMessage'))
             <div class="form-group has-error">
           @else
             <div class="form-group">
           @endif
             <label class="col-sm-4 control-label">标题：</label>
             <div class="col-sm-8">
-              <input name="title" type="text" class="form-control" placeholder="请输入标题" />
+              <input name="title" value="{{ old('title') }}" type="text" class="form-control" placeholder="请输入标题" />
               <span class="help-block">
-                @if (session('title'))
-                  {{ session('title') }}
+                @if (session('titleMessage'))
+                  {{ session('titleMessage') }}
                 @endif
               </span>
             </div>
           </div>
-          @if (session('link'))
+          @if (session('linkMessage'))
             <div class="form-group has-error">
           @else
             <div class="form-group">
           @endif
             <label class="col-sm-4 control-label">链接：</label>
             <div class="col-sm-8">
-              <input name="title" type="text" class="form-control" placeholder="请输入链接" />
+              <input name="link" type="text" value="{{ old('link') }}" class="form-control" placeholder="请输入链接" />
               <span class="help-block">
-                @if (session('link'))
-                  {{ session('link') }}
+                @if (session('linkMessage'))
+                  {{ session('linkMessage') }}
                 @endif
               </span>
             </div>
           </div>
-          <div class="form-group">
+          @if (session('imageMessage'))
+            <div class="form-group has-error">
+          @else
+            <div class="form-group">
+          @endif
             <label class="col-sm-4 control-label">图片上传：</label>
             <div class="col-sm-8">
               <input type="file" name="image" accept="image/*">
-              <p class="help-block">请上传分辨率为300x300的图片</p>
+              <p class="help-block">请上传一张图片</p>
             </div>
           </div>
           <div class="form-group">

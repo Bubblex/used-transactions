@@ -388,7 +388,7 @@ class AccountController extends Controller
     }
 
     private function handleAddBannerMessage($message) {
-        return redirect('/admin/banner/add')->with($message)->withInput();
+        return back()->with($message)->withInput();
     }
 
     public function addBanner(Request $request) {
@@ -398,37 +398,38 @@ class AccountController extends Controller
         $message = [];
 
         if (!$title) {
-            $message['title'] = '请填写标题';
+            $message['titleMessage'] = '请填写标题';
         }
         
         if (!$link) {
-            $message['link'] = '请填写链接';
+            $message['linkMessage'] = '请填写链接';
         }
 
         if (!$image) {
-            $message['image'] = '请上传一张图片';
+            $message['imageMessage'] = '请上传一张图片';
         }
 
         if ($message) {
             return $this->handleAddBannerMessage($message);
         }
 
-        // $user = User::where('id', $id)->first();
-        // $filePath = 'uploads/'.time().'.'.$avatar->getClientOriginalExtension();
+        $filePath = '/uploads/'.time().'.'.$image->getClientOriginalExtension();
 
-        // if ($request->hasFile('avatar')) {
-        //     Image::make($avatar)->save($filePath);
-        //     $user->avatar = '/'.$filePath;
-        // }
+        $banner = new Banner;
+        $banner->title = $title;
+        $banner->link = $link;
+        $banner->image = $filePath;
 
-        // $user->nickname = $nickname;
-        // $user->telephone = $telephone;
-        // $user->status = $status;
-        // $user->save();
-
-        // return $this->handleUpdateUserMessage($id, [
-        //     'success' => '修改成功'
-        // ]);
+        if ($banner->save()) {
+            return $this->handleAddBannerMessage([
+                'success' => '添加成功'
+            ]);
+        }
+        else {
+            return $this->handleAddBannerMessage([
+                'fail' => '添加失败'
+            ]);
+        }
     }
 
     /**
