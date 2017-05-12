@@ -83,8 +83,9 @@
           data: 'id',
           render: function(data, type, full) {
             var template = '<div class="table-options">'
+            template += '<a href="/admin/banner/detail?id=' + data + '">查看</a>'
+            template += '<a href="/admin/banner/update?id=' + data + '">编辑</a>'
             template += '<a href="javascript:" onclick="deleteBanner(' + data + ')">删除</a>'
-            template += '<a href="/admin/goods/detail?id=' + data + '">查看</a>'
             return template
           }
         }
@@ -95,7 +96,7 @@
 
 @section('breadcrumb')
   @parent
-  <li class="active">商品列表</li>
+  <li class="active">Banner 列表</li>
 @endsection
 
 @section('content')

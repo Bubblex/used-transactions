@@ -424,12 +424,16 @@ class AccountController extends Controller
             return $this->handleAddBannerMessage($message);
         }
 
-        $filePath = '/uploads/'.time().'.'.$image->getClientOriginalExtension();
+        $filePath = 'uploads/'.time().'.'.$image->getClientOriginalExtension();
 
         $banner = new Banner;
         $banner->title = $title;
         $banner->link = $link;
-        $banner->image = $filePath;
+
+        if ($request->hasFile('image')) {
+            Image::make($image)->save($filePath);
+            $banner->image = '/'.$filePath;
+        }
 
         if ($banner->save()) {
             return $this->handleAddBannerMessage([
@@ -441,6 +445,69 @@ class AccountController extends Controller
                 'fail' => '添加失败'
             ]);
         }
+    }
+
+    public function updateBanner(Request $request) {
+        $id = $request->id;
+        $title = $request->title;
+        $link = $request->link;
+        $image = $request->file('image');
+        $message = [];
+
+        if (!$title) {
+            $message['titleMessage'] = '请填写标题';
+        }
+        
+        if (!$link) {
+            $message['linkMessage'] = '请填写链接';
+        }
+
+        if ($message) {
+            return $this->handleUpdateBannerMessage($id, $message);
+        }
+
+        $banner = Banner::find($id);
+        $banner->title = $title;
+        $banner->link = $link;
+
+        if ($request->hasFile('image')) {
+            $filePath = 'uploads/'.time().'.'.$image->getClientOriginalExtension();
+            Image::make($image)->save($filePath);
+            $banner->image = '/'.$filePath;
+        }
+
+        if ($banner->save()) {
+            return $this->handleUpdateBannerMessage($id, [
+                'success' => '修改成功'
+            ]);
+        }
+        else {
+            return $this->handleUpdateBannerMessage($id, [
+                'fail' => '修改失败'
+            ]);
+        }
+    }
+
+    public function getBannerDetail(Request $request) {
+        $banner = Banner::find($request->id);
+
+        return view('admin.banner-detail')->with([
+            'banner' => $banner,
+            'admin' => $this->admin
+        ]);
+    }
+
+    public function updateBannerPage(Request $request) {
+        $banner = Banner::find($request->id);
+
+        return view('admin.banner-update')->with([
+            'banner' => $banner,
+            'admin' => $this->admin
+        ]);
+    }
+
+    private function handleUpdateBannerMessage($id, $message) {
+        return redirect('/admin/banner/update?id='.$id)->with($message);
     }
 
     /**

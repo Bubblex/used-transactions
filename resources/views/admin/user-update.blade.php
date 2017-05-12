@@ -26,7 +26,7 @@
           <input type='hidden' name="id" value="{{ $user->id }}" />
           <div class="form-group">
             <label for="inputName" class="col-sm-2 control-label">账户：</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
               <p class="form-control-static">{{ $user->account }}</p>
             </div>
           </div>
@@ -36,7 +36,7 @@
             <div class="form-group">
           @endif
             <label class="col-sm-2 control-label">昵称：</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
               <input name="nickname" type="text" value="{{ $user->nickname }}" class="form-control" placeholder="请输入昵称">
               <span class="help-block">
                 @if (session('nickname'))
@@ -47,7 +47,7 @@
           </div>
           <div class="form-group">
             <label for="inputName" class="col-sm-2 control-label">账户状态：</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
               <select name="status" class="form-control" placeholder="请选择用户状态">
                 <option
                   value="1"
@@ -74,7 +74,7 @@
             <div class="form-group">
           @endif
             <label class="col-sm-2 control-label">联系方式：</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
               <input name="telephone" type="text" value="{{ $user->telephone }}" class="form-control" placeholder="请输入联系方式" />
               <span class="help-block">
                 @if (session('telephone'))
@@ -85,13 +85,13 @@
           </div>
           <div class="form-group">
             <label for="inputSkills" class="col-sm-2 control-label">头像：</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
               <input type="file" name="avatar" accept="image/*">
               <p class="help-block">请上传分辨率为300x300的图片</p>
             </div>
           </div>
           <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="col-sm-offset-2 col-sm-8">
               <button type="submit" class="btn btn-primary" style="margin-right: 8px">保存</button>
               <a href="/admin/user" class="btn btn-primary">取消</a>
             </div>
