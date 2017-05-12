@@ -391,6 +391,17 @@ class AccountController extends Controller
         return back()->with($message)->withInput();
     }
 
+    public function deleteBanner(Request $request) {
+        $id = $request->id;
+
+        $banner = Banner::find($id);
+        $banner->delete();
+
+        return response()->json([
+            'message' => '删除成功'
+        ]);
+    }
+
     public function addBanner(Request $request) {
         $title = $request->title;
         $link = $request->link;

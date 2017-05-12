@@ -136,6 +136,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         // 添加 banner
         Route::post('banner/add', 'AccountController@addBanner');
 
+        // 删除 banner
+        Route::post('banner/delete', 'AccountController@deleteBanner');
+
         // 登出
         Route::get('logout', 'AccountController@logout');
     });

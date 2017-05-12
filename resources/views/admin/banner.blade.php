@@ -17,14 +17,13 @@
 
 @section('page-script')
   <script>
-    function updateGoodsStatus(id, status) {
+    function deleteBanner(id) {
       $.ajax({
-        url: '/admin/goods/disable',
+        url: '/admin/banner/delete',
         type: 'post',
         data: {
           _token: '{{ csrf_token() }}',
           id: id,
-          status: status,
         },
         success: function(data) {
           userTable.draw(false)
@@ -84,16 +83,8 @@
           data: 'id',
           render: function(data, type, full) {
             var template = '<div class="table-options">'
-
-            if (full.status === 1) {
-              template += '<a href="javascript:" onclick="updateGoodsStatus(' + data + ', 2)">禁用</a>'
-            }
-            else if (full.status === 2) {
-              template += '<a href="javascript:" onclick="updateGoodsStatus(' + data + ', 1)">启用</a>'
-            }
-
+            template += '<a href="javascript:" onclick="deleteBanner(' + data + ')">删除</a>'
             template += '<a href="/admin/goods/detail?id=' + data + '">查看</a>'
-
             return template
           }
         }
