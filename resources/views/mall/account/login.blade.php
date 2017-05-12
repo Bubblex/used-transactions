@@ -67,18 +67,22 @@ $("#loginbtn").on('click',function() {
 	// 可以实现网页异步更新
 	$.ajax({
 		// 请求地址
-		url: "",
+		url: "/account/login",
 		// 请求方式 POST 和 TYPE 两种类型
 		type: "POST",
 		// 向服务器发出的请求数据
 		data: {
-			username: username,
-			pwd: pwd
+			account: username,
+			password: pwd,
+			_token: '{{ csrf_token() }}'
 		},
 		// 请求成功后的回调函数
 		success: function(data) {
-			
+			alert(data.message);
 
+			if (data.status === 1) {
+				window.location.href = '/';
+			}
 		}
 	})
 })

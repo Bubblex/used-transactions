@@ -20,14 +20,15 @@ Route::get('/', function () {
 // 账户中心
 Route::group(['prefix' => 'account', 'namespace' => 'Mall'], function() {
     // 登录
-    Route::get('login', function() {
-        return view('mall.account.login');
-    });
+    Route::get('login', 'MallController@loginPage');
+
+    // 登录接口
+    Route::post('login', 'MallController@postLogin');
 
     // 注册
     Route::get('register', 'MallController@registerPage');
 
-    // 提交注册
+    // 提交注册接口
     Route::post('register', 'MallController@postRegister');
 });
 

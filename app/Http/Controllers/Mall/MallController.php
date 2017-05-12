@@ -30,6 +30,21 @@ class MallController extends Controller
         return view('mall.account.register');
     }
 
+    /**
+     * 登录页面
+     *
+     * @return void
+     */
+    public function loginPage() {
+        return view('mall.account.login');
+    }
+
+    /**
+     * 注册接口
+     *
+     * @param Request $request
+     * @return void
+     */
     public function postRegister(Request $request) {
         $account = $request->account;
         $password = $request->password;
@@ -44,7 +59,7 @@ class MallController extends Controller
         $user = new User;
         $user->account = $account;
         $user->nickname = $nickname;
-        $user->password = $password;
+        $user->password = md5($password);
 
         if ($user->save()) {
             return response()->json(['status' => 1]);
@@ -52,5 +67,23 @@ class MallController extends Controller
         else {
             return response()->json(['status' => 2]);
         }
+    }
+
+    public function postLogin(Request $request) {
+        $account = $request->account;
+        $password = md5($request->password);
+
+        $user = User::where('account', $account)->first();
+
+        if (!$user) {
+            return response()->json(['status' => 2, 'message' => '该用户不存在']);
+        }
+
+        if ($user->password != $password) {
+            return response()->json(['status' => 3, 'message' => '用户名或密码错误']);
+        }
+
+        session(['user' => $user]);
+        return response()->json(['status' => 1, 'message' => '登录成功']);
     }
 }
