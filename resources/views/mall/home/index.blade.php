@@ -74,27 +74,7 @@ $(function() {
 <!-- END header -->
 
 <!-- BEGIN 头部导航 -->
-<div class="header_btm">
-	<div class="wrap">
-		<div class="header_sub">
-			<div class="h_menu">
-				<ul>
-					<li class="active"><a href="/">主页</a></li> |
-					<li><a href="/goods/list">图书教材</a></li> |
-					<li><a href="/goods/list">数码配件</a></li> |
-					<li><a href="/goods/list">化妆品</a></li> | 
-					<li><a href="/goods/list">数码</a></li> |
-					<li><a href="/goods/list">手机</a></li> |
-					<li><a href="/goods/list">电脑</a></li> |
-					<li><a href="/goods/list">生活娱乐</a></li> |
-					<li><a href="/goods/list">校园代步</a></li> |
-					<li><a href="/goods/list">衣物伞帽</a></li>
-				</ul>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-</div>
+@include('master.nav')
 <!-- END 头部导航 -->
 
 <!-- BEGIN swiper -->
@@ -117,69 +97,17 @@ $(function() {
 <!-- BEGIN 推荐商品 -->
 <div class="wrap">
 	<div id="owl-demo" class="owl-carousel">
-		<div class="item" onClick="location.href='/goods/detail';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="/resource/image/c1.jpg" alt="Lazy Owl Image">
+		@foreach($goods as $good)
+			<div class="item" onClick="location.href='/goods/detail?id={{ $good->id }}';">
+				<div class="cau_left">
+					<img class="lazyOwl" data-src="{{ $good->image }}" alt="{{ $good->name }}">
+				</div>
+				<div class="cau_left">
+					<h4><a href="/goods/detail?id={{ $good->id }}">{{ $good->name }}</a></h4>
+					<a href="/goods/detail?id={{ $good->id }}" class="btn">查看</a>
+				</div>
 			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">商品名称</a></h4>
-				<a href="/goods/detail" class="btn">查看</a>
-			</div>
-		</div>
-		<div class="item" onClick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="/resource/image/c2.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded tees</a></h4>
-				<a href="details.html" class="btn">查看</a>
-			</div>
-		</div>
-		<div class="item" onClick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="/resource/image/c3.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded jeens</a></h4>
-				<a href="details.html" class="btn">查看</a>
-			</div>
-		</div>
-		<div class="item" onClick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="/resource/image/c2.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded tees</a></h4>
-				<a href="details.html" class="btn">查看</a>
-			</div>
-		</div>
-		<div class="item" onClick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="/resource/image/c1.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded shoes</a></h4>
-				<a href="details.html" class="btn">查看</a>
-			</div>
-		</div>
-		<div class="item" onClick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="/resource/image/c2.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded tees</a></h4>
-				<a href="details.html" class="btn">查看</a>
-			</div>
-		</div>
-		<div class="item" onClick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="/resource/image/c3.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded jeens</a></h4>
-				<a href="details.html" class="btn">查看</a>
-			</div>
-		</div>
+		@endforeach
 	</div>
 </div>
 <!--END 推荐商品-->

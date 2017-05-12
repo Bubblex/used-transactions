@@ -8,13 +8,17 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Banner;
+use App\Models\Good;
 
 class IndexController extends Controller
 {
     public function indexPage() {
         $banners = Banner::all();
+        $goods = Good::orderBy('id', 'desc')->take(12)->get();
+
         return view('mall.home.index')->with([
-            'banners' => $banners
+            'banners' => $banners,
+            'goods' => $goods
         ]);
     }
 }
