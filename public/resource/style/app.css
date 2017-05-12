@@ -1,3 +1,4 @@
+/*header部分*/
 .c1 i {
     font-size: 1.3em;
 }
@@ -47,4 +48,18 @@
     margin-bottom: 10px;
     margin-left: 12px;
     color: #4CCFC1;
+}
+
+
+/*发布商品页*/
+.release-option {
+    font-family: 'Microsoft yahei', sans-serif;
+    background: #FFFFFF;
+    border: 1px solid #E7E7E7;
+    color: rgba(85, 81, 81, 0.84);
+    padding: 8px;
+    display: block;
+    width: 96.3333%;
+    outline: none;
+    text-transform: capitalize;
 }
