@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 // 账户中心
-Route::group(['prefix' => 'account'], function() {
+Route::group(['prefix' => 'account', 'namespace' => 'Mall'], function() {
     // 登录
     Route::get('login', function() {
         return view('mall.account.login');
@@ -28,10 +28,13 @@ Route::group(['prefix' => 'account'], function() {
     Route::get('register', function() {
         return view('mall.account.register');
     });
+
+    // 提交注册
+    Route::post('register', 'MallController@postRegister');
 });
 
 // 商品
-Route::group(['prefix' => 'goods'], function() {
+Route::group(['prefix' => 'goods', 'namespace' => 'Mall'], function() {
     // 商品详情
     Route::get('detail', function() {
         return view('mall.goods.detail');
@@ -40,6 +43,11 @@ Route::group(['prefix' => 'goods'], function() {
     // 商品列表
     Route::get('list', function() {
         return view('mall.goods.list');
+    });
+
+    // 发布商品
+    Route::get('release', function() {
+        return view('mall.goods.release');
     });
 });
 
