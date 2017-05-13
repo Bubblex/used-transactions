@@ -51,6 +51,27 @@
 }
 
 
+.header-release {
+    display: inline-block;
+    float: left;
+    margin-right: 50px;
+    line-height: 50px;
+    background: #4CCFC1;
+    color: #fff;
+    font-weight: bold;
+    padding: 0 20px;
+    border-radius: 25px;
+    -webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.header-release:hover {
+    color: rgb(24, 141, 118);
+}
+
+
 /*发布商品页*/
 .release-option {
     font-family: 'Microsoft yahei', sans-serif;
@@ -63,3 +84,97 @@
     outline: none;
     text-transform: capitalize;
 }
+
+
+/*我发布的商品记录*/
+.mygoods-delete {
+    margin-left: 10px;
+    cursor: pointer;
+}
+.mine-grid-4:hover h4 .mygoods-delete {
+    color: #fff;
+}
+
+.mygoods-delete:hover {
+    background: rgb(24, 141, 118);
+}
+
+.select-release {
+    display: inline-block;
+    margin-left: 50px;
+    line-height: 30px;
+    background: #4CCFC1;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.select-release:hover {
+    color: rgb(24, 141, 118);
+}
+
+
+/*个人中心*/
+.mine-tabs .mine-tabs {
+    width: 378px;
+}
+.mine-tabs input#tab-2 {
+    left: 378px;
+}
+
+.mine-tabs input#tab-3 {
+    left: 756px;
+}
+.personal-center-a {
+    color: #fff;
+}
+
+.personal-center-release-a {
+    float: right;
+}
+
+.mine-tabs .mine-tab-content .mine-title {
+    color: #40C4B2;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-bottom: 1px solid #40C4B2;
+}
+.mine-tabs .mine-account {
+    margin: 20px 30px;
+}
+
+.mine-tabs .mine-account span {
+    margin-left: 20px;
+}
+
+.mine-tabs .mine-account .mine-info-input {
+    position: relative;
+    height: 30px;
+    padding: 0 12px;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    display: none;
+}
+
+.mine-info-edit {
+    float: right;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.mine-info-edit:hover {
+    color: rgb(24, 141, 118);
+}
+
+.mine-info-save {
+    display: none;
+}
+

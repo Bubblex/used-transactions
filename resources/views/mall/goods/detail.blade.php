@@ -32,6 +32,7 @@
 	</script>
 </head>
 <body>
+
 <!-- BEGIN header -->
 <div class="header_bg">
 	<div class="wrap">
@@ -46,46 +47,14 @@
 	    			<span id="searchbtn" type="submit"></span>
 	    		</form>
 			</div>
-
-			<div class="h_login">
-				<a class="add_a" href="/account/register">注册</a>
-				<a class="add_a" href="/account/login">登录</a>
-			</div>
-
-			<div class="logined">
-				<a href="javascript:">
-					<img src="/resource/image/logo.png">
-					<span>昵称啊啊啊</span>
-					<img class="setting" src="/resource/image/setting.png" onClick="location.href='/mine/info'">
-				</a>
-			</div>
+			@include('master.header-account')
 		</div>
 	</div>
 </div>
 <!-- END header -->
 
 <!-- BEGIN 头部导航 -->
-<div class="header_btm">
-	<div class="wrap">
-		<div class="header_sub">
-			<div class="h_menu">
-				<ul>
-					<li class="active"><a href="/">主页</a></li> |
-					<li><a href="/goods/list">图书教材</a></li> |
-					<li><a href="/goods/list">数码配件</a></li> |
-					<li><a href="/goods/list">化妆品</a></li> | 
-					<li><a href="/goods/list">数码</a></li> |
-					<li><a href="/goods/list">手机</a></li> |
-					<li><a href="/goods/list">电脑</a></li> |
-					<li><a href="/goods/list">生活娱乐</a></li> |
-					<li><a href="/goods/list">校园代步</a></li> |
-					<li><a href="/goods/list">衣物伞帽</a></li>
-				</ul>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-</div>
+@include('master.nav')
 <!-- END 头部导航 -->
 
 
@@ -322,98 +291,10 @@
 	</div>
 </div>
 </div>
-<!-- start footer -->
-<div class="footer_bg">
-<div class="wrap">
-	<div class="footer">
-		<!-- start grids_of_4 -->
-		<div class="grids_of_4">
-			<div class="grid1_of_4">
-				<h4>featured sale</h4>
-				<ul class="f_nav">
-					<li><a href="#">alexis Hudson</a></li>
-					<li><a href="#">american apparel</a></li>
-					<li><a href="#">ben sherman</a></li>
-					<li><a href="#">big buddha</a></li>
-					<li><a href="#">channel</a></li>
-					<li><a href="#">christian audigier</a></li>
-					<li><a href="#">coach</a></li>
-					<li><a href="#">cole haan</a></li>
-				</ul>
-			</div>
-			<div class="grid1_of_4">
-				<h4>mens store</h4>
-				<ul class="f_nav">
-					<li><a href="#">alexis Hudson</a></li>
-					<li><a href="#">american apparel</a></li>
-					<li><a href="#">ben sherman</a></li>
-					<li><a href="#">big buddha</a></li>
-					<li><a href="#">channel</a></li>
-					<li><a href="#">christian audigier</a></li>
-					<li><a href="#">coach</a></li>
-					<li><a href="#">cole haan</a></li>
-				</ul>
-			</div>
-			<div class="grid1_of_4">
-				<h4>women store</h4>
-				<ul class="f_nav">
-					<li><a href="#">alexis Hudson</a></li>
-					<li><a href="#">american apparel</a></li>
-					<li><a href="#">ben sherman</a></li>
-					<li><a href="#">big buddha</a></li>
-					<li><a href="#">channel</a></li>
-					<li><a href="#">christian audigier</a></li>
-					<li><a href="#">coach</a></li>
-					<li><a href="#">cole haan</a></li>
-				</ul>
-			</div>
-			<div class="grid1_of_4">
-				<h4>quick links</h4>
-				<ul class="f_nav">
-					<li><a href="#">alexis Hudson</a></li>
-					<li><a href="#">american apparel</a></li>
-					<li><a href="#">ben sherman</a></li>
-					<li><a href="#">big buddha</a></li>
-					<li><a href="#">channel</a></li>
-					<li><a href="#">christian audigier</a></li>
-					<li><a href="#">coach</a></li>
-					<li><a href="#">cole haan</a></li>
-				</ul>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
-</div>
-</div>
-<!-- start footer -->
-<div class="footer_bg1">
-<div class="wrap">
-	<div class="footer">
-		<!-- scroll_top_btn -->
-	    <script type="text/javascript">
-			$(document).ready(function() {
 
-				var defaults = {
-		  			containerID: 'toTop', // fading element id
-					containerHoverID: 'toTopHover', // fading element hover id
-					scrollSpeed: 1200,
-					easingType: 'linear'
-		 		};
-
-
-				$().UItoTop({ easingType: 'easeOutQuart' });
-
-			});
-		</script>
-		 <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
-		<!--end scroll_top_btn -->
-		<div class="copy">
-			<p class="link">Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a> -  More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a></p>
-		</div>
-		<div class="clear"></div>
-	</div>
-</div>
-</div>
+<!-- BEGIN footer -->
+@include('master.mall-footer')
+<!-- END footer -->
 
 </body>
 </html>
