@@ -39,12 +39,7 @@
 				<a href="/"><img src="/resource/image/logo.png" alt=""/> </a>
 			</div>
 
-			<div class="h_search">
-	    		<form>
-	    			<input id="searchinput" type="text" placeholder="请输入搜索关键字">
-	    			<span id="searchbtn" type="submit"></span>
-	    		</form>
-			</div>
+			@include('master.header-search')
 			@include('master.header-account')
 		</div>
 	</div>
@@ -60,10 +55,14 @@
 <div class="wrap">	
 	<div class="main">
 		<h2 class="style top">
-			@if ($type)
-				{{ $type->name }}
+			@if (!empty($search))
+				搜索结果
 			@else
-				全部
+				@if (!empty($type))
+					{{ $type->name }}
+				@else
+					全部
+				@endif
 			@endif
 		</h2>
 		@foreach($goods as $index => $good)

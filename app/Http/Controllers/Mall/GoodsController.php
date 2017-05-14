@@ -14,12 +14,21 @@ class GoodsController extends Controller
 {
     public function listPage(Request $request) {
         $id = $request->id;
+        $search = $request->search;
         $goods = null;
         $type = null;
 
         if ($id) {
             $type = GoodType::find($id);
-            $goods = Good::where('goods_type_id', $id)->paginate(6);
+            $goods = Good::where('goods_type_id', $id);
+        }
+
+        if ($search) {
+            $goods = Good::where('name', 'like', '%'.$search.'%');
+        }
+
+        if ($goods) {
+            $goods = $goods->paginate(6);
         }
         else {
             $goods = Good::paginate(6);
@@ -28,6 +37,7 @@ class GoodsController extends Controller
         return view('mall.goods.list')->with([
             'id' => $id,
             'type' => $type,
+            'search' => $search,
             'goods' => $goods
         ]);
     }

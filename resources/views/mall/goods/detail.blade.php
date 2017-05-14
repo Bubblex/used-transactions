@@ -40,12 +40,7 @@
 			<div class="logo">
 				<a href="/"><img src="/resource/image/logo.png" alt=""/> </a>
 			</div>
-			<div class="h_search">
-	    		<form>
-	    			<input id="searchinput" type="text" placeholder="请输入搜索关键字">
-	    			<span id="searchbtn" type="submit"></span>
-	    		</form>
-			</div>
+            @include('master.header-search')
 			@include('master.header-account')
 		</div>
 	</div>
