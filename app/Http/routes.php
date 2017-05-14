@@ -33,9 +33,7 @@ Route::group(['prefix' => 'account', 'namespace' => 'Mall'], function() {
 // 商品
 Route::group(['prefix' => 'goods', 'namespace' => 'Mall'], function() {
     // 商品详情
-    Route::get('detail', function() {
-        return view('mall.goods.detail');
-    });
+    Route::get('detail', 'GoodsController@detailPage');
 
     // 商品列表
     Route::get('list', function() {

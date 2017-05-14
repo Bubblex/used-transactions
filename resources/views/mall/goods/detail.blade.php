@@ -40,7 +40,6 @@
 			<div class="logo">
 				<a href="/"><img src="/resource/image/logo.png" alt=""/> </a>
 			</div>
-
 			<div class="h_search">
 	    		<form>
 	    			<input id="searchinput" type="text" placeholder="请输入搜索关键字">
@@ -74,7 +73,7 @@
 				    <div class="more-views" style="float:left;">
 				        <div class="more-views-container">
 				        <ul>
-				            <li>
+				            {{-- <li>
 				            	<a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
 				            	<img src="" src_main=""  title="" alt="" /></a>
 				            </li>
@@ -93,16 +92,17 @@
 				            <li>
 				            	<a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
 				            	<img src="" src_main="" title="" alt="" /></a>
-				            </li>
+				            </li> --}}
 				          </ul>
 				        </div>
 				    </div>
-				    <div class="product-image">
+				    <div class="product-image" style="overflow: hidden">
 				        <a class="cs-fancybox-thumbs cloud-zoom" rel="adjustX:30,adjustY:0,position:'right',tint:'#202020',tintOpacity:0.5,smoothMove:2,showTitle:true,titleOpacity:0.5" data-fancybox-group="thumb" href="/resource/image/0001-2.jpg" title="Women Shorts" alt="Women Shorts">
 				           	<img src="/resource/image/0001-2.jpg" alt="Women Shorts" title="Women Shorts" />
 				        </a>
 				   </div>
 					<script type="text/javascript">
+						/*
 						var prodGallery = jQblvg.parseJSON('{"prod_1":{"main":{"orig":"/resource/image/0001-2.jpg","main":"/resource/image/large/0001-2.jpg","thumb":"/resource/image/small/0001-2.jpg","label":""},"gallery":{"item_0":{"orig":"/resource/image/0001-2.jpg","main":"/resource/image/large/0001-2.jpg","thumb":"/resource/image/small/0001-2.jpg","label":""},"item_1":{"orig":"/resource/image/0001-1.jpg","main":"/resource/image/large/0001-1.jpg","thumb":"/resource/image/small/0001-1.jpg","label":""},"item_2":{"orig":"/resource/image/0001-5.jpg","main":"/resource/image/large/0001-5.jpg","thumb":"/resource/image/small/0001-5.jpg","label":""},"item_3":{"orig":"/resource/image/0001-3.jpg","main":"/resource/image/large/0001-3.jpg","thumb":"/resource/image/small/0001-3.jpg","label":""},"item_4":{"orig":"/resource/image/0001-4.jpg","main":"/resource/image/large/0001-4.jpg","thumb":"/resource/image/small/0001-4.jpg","label":""}},"type":"simple","video":false}}'),
 						    gallery_elmnt = jQblvg('.product-img-box'),
 						    galleryObj = new Object(),
@@ -133,19 +133,17 @@
 						function initGallery(a,b,element) {
 						    galleryObj[a] = new prodViewGalleryForm(prods, b, gallery_elmnt, gallery_conf, '.product-image', '.more-views', '');
 						};
+						*/
 					</script>
 				</div>
 				</div>
 				</div>
-				<!-- end product_slider -->
 			</div>
-			<!-- start span1_of_1 -->
 			<div class="span1_of_1_des">
 				  <div class="desc1">
-					<h3>男式短袖 </h3>
-					<p>商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介</p>
-					<h5>￥：399RMB
-              <!-- <a href="#">click for offer</a> -->
+					<h3>{{ $goods->name }}</h3>
+					<p>{{ $goods->summary }}</p>
+					<h5>￥：{{ $goods->price }}RMB
           </h5>
 					<div class="available">
 						<!-- <h4>Available Options :</h4>
@@ -176,22 +174,24 @@
 							</li>
 						</ul> -->
 						<div class="btn_form">
-							<form>
+							<form class="get-sellers-concat">
 								<input type="submit" value="联系卖家" title="" />
 							</form>
 						</div>
-						<span class="span_right"><a href="#">我要发布产品 </a></span>
+						<span class="span_right" style="margin-left: 16px;"><a class="release-goods-btn" href="/mall/goods/release">我要发布产品 </a></span>
 						<div class="clear"></div>
 					</div>
 					<div class="share-desc">
-						<div class="share">
-							<h4>分享产品:</h4>
+						<div class="share" style="display: none">
+							<p>卖家姓名：{{ $goods->concat_name }}</p>
+							<p>联系方式：{{ $goods->concat_telephone }}</p>
+							{{-- <h4>分享产品:</h4>
 							<ul class="share_nav">
 								<li><a href="#"><img src="/resource/image/facebook.png" title="facebook"></a></li>
 								<li><a href="#"><img src="/resource/image/twitter.png" title="Twiiter"></a></li>
 								<li><a href="#"><img src="/resource/image/rss.png" title="Rss"></a></li>
 								<li><a href="#"><img src="/resource/image/gpluse.png" title="Google+"></a></li>
-				    		</ul>
+				    		</ul> --}}
 						</div>
 						<div class="clear"></div>
 					</div>
@@ -213,35 +213,15 @@
 
 			        <div class="content">
 				        <div class="content-1">
-				        	<p class="para top"><span>LOREM IPSUM</span> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined </p>
-							<ul>
-								<li>Research</li>
-								<li>Design and Development</li>
-								<li>Porting and Optimization</li>
-								<li>System integration</li>
-								<li>Verification, Validation and Testing</li>
-								<li>Maintenance and Support</li>
-							</ul>
+                            {!! $goods->detail !!}
 							<div class="clear"></div>
 						</div>
 				        <div class="content-2">
-							<p class="para"><span>WELCOME </span> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections </p>
-							<ul class="qua_nav">
-								<li>Multimedia Systems</li>
-								<li>Digital media adapters</li>
-								<li>Set top boxes for HDTV and IPTV Player applications on various Operating Systems and Hardware Platforms</li>
-							</ul>
+							{!! $goods->specification !!}
+							<div class="clear"></div>
 						</div>
 				        <div class="content-3">
-				        	<p class="para top"><span>LOREM IPSUM</span> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined </p>
-							<ul>
-								<li>Research</li>
-								<li>Design and Development</li>
-								<li>Porting and Optimization</li>
-								<li>System integration</li>
-								<li>Verification, Validation and Testing</li>
-								<li>Maintenance and Support</li>
-							</ul>
+							{!! $goods->use_situation !!}
 							<div class="clear"></div>
 						</div>
 			        </div>
@@ -254,16 +234,9 @@
 						<h4>最新闲置</h4>
 						<div class="single-nav">
 			                <ul>
-                                <li><a href="#"> 九成新 显示器</a></li>
-                                <li><a href="#"> 九成新 显示器</a></li>
-                                <li><a href="#"> 九成新 显示器</a></li>
-                                <li><a href="#"> 九成新 显示器</a></li>
-                                <li><a href="#"> 九成新 显示器</a></li>
-                                <li><a href="#"> 九成新 显示器</a></li>
-                                <li><a href="#"> 九成新 显示器</a></li>
-                                <li><a href="#"> 九成新 显示器</a></li>
-                                <li><a href="#"> 九成新 显示器</a></li>
-			                    <li><a href="#"> 九成新 显示器</a></li>
+								@foreach($newGoods as $good)
+									<li><a href="/goods/detail?id={{ $good->id }}">{{ $good->name }}</a></li>
+								@endforeach
 			                </ul>
 			              </div>
 						  <div class="banner-wrap bottom_banner color_link">
@@ -273,14 +246,13 @@
 						 </div>
 						 <div class="brands">
 							 <h1>猜你喜欢</h1>
-					  		 <div class="field">
-				                 <select class="select1">
-				                   <option>Please Select</option>
-										<option>Lorem ipsum dolor sit amet</option>
-										<option>Lorem ipsum dolor sit amet</option>
-										<option>Lorem ipsum dolor sit amet</option>
-				                  </select>
-				            </div>
+							<div class="single-nav">
+								<ul>
+									@foreach($likeGoods as $good)
+										<li><a href="/goods/detail?id={{ $good->id }}">{{ $good->name }}</a></li>
+									@endforeach
+								</ul>
+							</div>
 			    		</div>
 					</div>
 				</div>
@@ -295,6 +267,25 @@
 <!-- BEGIN footer -->
 @include('master.mall-footer')
 <!-- END footer -->
+<script>
+	$('.get-sellers-concat').on('submit', function(e) {
+		e.preventDefault();
+
+		if ('{{ session("user") }}') {
+			$('.share').show()
+		}
+		else {
+			alert('登录后查看卖家联系方式')
+		}
+	})
+
+	$('.release-goods-btn').on('click', function(e) {
+		if (!'{{ session("user") }}') {
+			e.preventDefault()
+			alert('登录后发布商品')
+		}
+	})
+</script>
 
 </body>
 </html>
