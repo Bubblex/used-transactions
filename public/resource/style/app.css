@@ -178,3 +178,38 @@
     display: none;
 }
 
+.pagination-box {
+
+}
+
+.pagination {
+    width: auto;
+    margin-left: 33px;
+}
+
+.pagination li {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #3CC395;
+    text-align: center;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.pagination li.active,
+.pagination li:hover {
+    background-color: #3CC395;
+}
+
+.pagination li.active span,
+.pagination li:hover span,
+.pagination li:hover a {
+    color: #fff;
+}
+
+.pagination li a,
+.pagination li span {
+    color: #3CC395;
+}

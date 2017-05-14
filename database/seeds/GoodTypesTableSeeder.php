@@ -13,7 +13,19 @@ class GoodTypesTableSeeder extends Seeder
     {
         //
         DB::table('good_types')->insert([
-            'name' => '电器',
+            'name' => '图书教材',
+        ]);
+
+        DB::table('good_types')->insert([
+            'name' => '数码配件',
+        ]);
+
+        DB::table('good_types')->insert([
+            'name' => '化妆品',
+        ]);
+
+        DB::table('good_types')->insert([
+            'name' => '数码',
         ]);
 
         DB::table('good_types')->insert([
@@ -22,6 +34,18 @@ class GoodTypesTableSeeder extends Seeder
 
         DB::table('good_types')->insert([
             'name' => '电脑',
+        ]);
+
+        DB::table('good_types')->insert([
+            'name' => '生活娱乐',
+        ]);
+
+        DB::table('good_types')->insert([
+            'name' => '校园代步',
+        ]);
+
+        DB::table('good_types')->insert([
+            'name' => '衣物伞帽',
         ]);
     }
 }

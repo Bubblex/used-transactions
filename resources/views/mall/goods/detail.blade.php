@@ -98,7 +98,7 @@
 				    </div>
 				    <div class="product-image" style="overflow: hidden">
 				        <a class="cs-fancybox-thumbs cloud-zoom" rel="adjustX:30,adjustY:0,position:'right',tint:'#202020',tintOpacity:0.5,smoothMove:2,showTitle:true,titleOpacity:0.5" data-fancybox-group="thumb" href="/resource/image/0001-2.jpg" title="Women Shorts" alt="Women Shorts">
-				           	<img src="/resource/image/0001-2.jpg" alt="Women Shorts" title="Women Shorts" />
+				           	<img src="{{ $goods->image }}" alt="Women Shorts" title="Women Shorts" />
 				        </a>
 				   </div>
 					<script type="text/javascript">

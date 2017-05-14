@@ -1,9 +1,7 @@
-<!--商品列表页-->
-
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>The Aditii Website Template | Details </title>
+<title>校园二手网</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -61,47 +59,35 @@
 <div class="main_bg">
 <div class="wrap">	
 	<div class="main">
-		<h2 class="style top">分类名称</h2>
-		<div class="grids_of_3">
-
-
-			<div class="grid1_of_3">
-				<a href="/goods/detail">
-					<img src="/resource/image/pic1.jpg" alt=""/>
-					<h3>商品详情商品详情商品详情</h3>
-					<div class="price">
-						<h4>RMB300 <span>详情</span></h4>
-					</div>
-					<span class="b_btm"></span>
-				</a>
+		<h2 class="style top">
+			@if ($type)
+				{{ $type->name }}
+			@else
+				全部
+			@endif
+		</h2>
+		@foreach($goods as $index => $good)
+			@if ($index == 0 || $index % 3 == 0)
+			<div class="grids_of_3">
+			@endif
+				<div class="grid1_of_3">
+					<a href="/goods/detail?id={{ $good->id }}">
+						<img src="{{ $good->image }}" alt="{{ $good->name }}"/>
+						<h3>{{ $good->name }}</h3>
+						<div class="price">
+							<h4>RMB{{ $good->price }} <span>详情</span></h4>
+						</div>
+						<span class="b_btm"></span>
+					</a>
+				</div>
+			@if ($index % 3 == 2 || count($goods) == $index + 1)
+				<div class="clear"></div>
 			</div>
-
-
-			<div class="grid1_of_3">
-				<a href="/goods/detail">
-					<img src="/resource/image/pic1.jpg" alt=""/>
-					<h3>商品详情商品详情商品详情商品详情商品详情商品详情</h3>
-					<div class="price">
-						<h4>RMB300 <span>详情</span></h4>
-					</div>
-					<span class="b_btm"></span>
-				</a>
-			</div>
-
-			<div class="grid1_of_3">
-				<a href="/goods/detail">
-					<img src="/resource/image/pic1.jpg" alt=""/>
-					<h3>商品详情商品详情商品详情商品详情商品详情商品详情</h3>
-					<div class="price">
-						<h4>RMB300 <span>详情</span></h4>
-					</div>
-					<span class="b_btm"></span>
-				</a>
-			</div>
-
-
-			<div class="clear"></div>
-		</div>	
+			@endif
+		@endforeach
+		<div class="pagination-box">
+			{!! $goods->appends(['id' => $id])->render() !!}
+		</div>
 	</div>
 </div>
 </div>		
