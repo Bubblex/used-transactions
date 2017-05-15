@@ -114,9 +114,8 @@ class AccountController extends Controller
 
         $admin->nickname = $nickname;
 
-        $filePath = 'uploads/'.time().'.'.$avatar->getClientOriginalExtension();
-
         if ($request->hasFile('avatar')) {
+            $filePath = 'uploads/'.time().'.'.$avatar->getClientOriginalExtension();
             Image::make($avatar)->save($filePath);
             $admin->avatar = '/'.$filePath;
         }

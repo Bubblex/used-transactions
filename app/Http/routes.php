@@ -45,16 +45,17 @@ Route::group(['prefix' => 'goods', 'namespace' => 'Mall'], function() {
 });
 
 // 个人中心
-Route::group(['prefix' => 'mine'], function() {
+Route::group(['prefix' => 'mine', 'namespace' => 'User'], function() {
     // 修改个人资料
     Route::get('change', function() {
         return view('mall.mine.change');
     });
 
     // 个人信息
-    Route::get('info', function() {
-        return view('mall.mine.info');
-    });
+    Route::get('info', 'UserController@userInfoPage');
+
+    // 修改个人资料
+    Route::post('update/info', 'UserController@updateUserInfo');
 
     // 发布的商品
     Route::get('goods', function() {

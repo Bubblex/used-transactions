@@ -61,12 +61,7 @@ $(function() {
 			<div class="logo">
 				<a href="/"><img src="/resource/image/logo.png" alt=""/> </a>
 			</div>
-			<div class="h_search">
-	    		<form>
-	    			<input id="searchinput" type="text" placeholder="请输入搜索关键字">
-	    			<span id="searchbtn" type="submit"></span>
-	    		</form>
-			</div>
+            @include('master.header-search')
 			@include('master.header-account')
 		</div>
 	</div>
@@ -101,10 +96,19 @@ $(function() {
 					<div class="content-1">
 						<ul class=" mine-tab-content">
 							<p class="mine-title">账号信息</p>
-							<p class="mine-account">账号: <span>jjj</span></p>
+							<p class="mine-account">账号: <span>{{ $user->account }}</span></p>
 							<p class="mine-title">基本信息<a class="mine-info-edit" id='js-edit'>编辑</a><a class="mine-info-edit mine-info-save">保存</a></p>
-							<p class="mine-account">昵 &nbsp&nbsp 称: <span><span class="js-info">11111</span><input name="nickname" type="text" class="textbox mine-info-input" /></span></p>
-							<p class="mine-account">手机号: <span><span class="js-info">11111</span><input name="telephone" type="text" class="textbox mine-info-input" /></span></p>
+							<p class="mine-account">
+								头 &nbsp&nbsp 像:
+								<span>
+									<span class="js-info">
+										<img src="{{ $user->avatar }}" width="120" style="vertical-align: top">
+									</span>
+									<input type="file" name="avatar" class="textbox mine-info-input" accept="image/*">
+								</span>
+							</p>
+							<p class="mine-account">昵 &nbsp&nbsp 称: <span><span class="js-info">{{ $user->nickname }}</span><input name="nickname" value="{{ $user->nickname }}" type="text" class="textbox mine-info-input" /></span></p>
+							<p class="mine-account">手机号: <span><span class="js-info">{{ $user->telephone }}</span><input name="telephone" type="text" value="{{ $user->telephone }}" class="textbox mine-info-input" /></span></p>
 						</ul>
 						<div class="clear"></div>
 					</div>
@@ -163,14 +167,29 @@ $('.mine-info-save').on('click',function() {
 			return
     } 
 
+	var data = new FormData();
+	data.append('nickname', nickname);
+	data.append('telephone', telephone);
+	data.append('_token', '{{ csrf_token() }}');
+
+	var files = $("input[name='avatar']").prop('files')
+
+	if (files.length > 0) {
+		data.append('avatar', files[0]);
+	}
+
 		$.ajax({
-			url: "",
+			url: "/mine/update/info",
 			type: "POST",
-			data: {
-				nickname,
-				telephone,
-			},
+			data: data,
+			contentType: false,
+			processData: false,
 			success: function(data) {
+				alert(data.message)
+
+				if (data.status === 1) {
+					window.location.reload()
+				}
 			}
 		})
 
