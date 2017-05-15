@@ -54,7 +54,7 @@
 .header-release {
     display: inline-block;
     float: left;
-    margin-right: 50px;
+    margin-right: 30px;
     line-height: 50px;
     background: #4CCFC1;
     color: #fff;
@@ -93,6 +93,10 @@
 }
 .mine-grid-4:hover h4 .mygoods-delete {
     color: #fff;
+    font-size: 16px;
+}
+.mine-grid-4 h4 .mygoods-delete {
+    font-size: 16px;
 }
 
 .mygoods-delete:hover {

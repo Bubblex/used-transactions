@@ -6,9 +6,6 @@
                 <img src="{{ session('user')->avatar }}" onClick="location.href='/mine/info'">
             @endif
             <span>{{ session('user')->nickname }}</span>
-            @if (session('user')->avatar)
-                <img class="setting" src="/resource/image/setting.png" onClick="location.href='/mine/info'">
-            @endif
         </a>
     </div>
 @else
