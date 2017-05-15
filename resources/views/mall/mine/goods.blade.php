@@ -61,12 +61,7 @@ $(function() {
 			<div class="logo">
 				<a href="/"><img src="/resource/image/logo.png" alt=""/> </a>
 			</div>
-			<div class="h_search">
-	    		<form>
-	    			<input id="searchinput" type="text" placeholder="请输入搜索关键字">
-	    			<span id="searchbtn" type="submit"></span>
-	    		</form>
-			</div>
+            @include('master.header-search')
 			@include('master.header-account')
 		</div>
 	</div>
@@ -90,34 +85,35 @@ $(function() {
 	<div class="wrap">
 		<div class="main">
 
-			<a href="javascript:" class="select-release">全部</a>
-			<a href="javascript:" class="select-release">已售出</a>
+			<a href="/mine/goods" class="select-release">全部</a>
+			<a href="/mine/goods?type=complete" class="select-release">已售出</a>
 
-			<div class="grids_of_3">
-
-				<div class="grid1_of_3 mine-grid-4">
-					<img src="/resource/image/pic1.jpg" alt=""/>
-					<h3>图书教材</h3>
-					<div class="price">
-						<h4><span class="mygoods-delete" onClick="location.href='/goods/detail';">详情</span><span class="mygoods-delete">删除</span><span class="mygoods-delete">确认售出</span></h4>
+			@foreach($goods as $index => $good)
+				@if ($index == 0 || $index % 3 == 0)
+				<div class="grids_of_3">
+				@endif
+					<div class="grid1_of_3 mine-grid-4">
+						<a href="javascript:">
+							<img src="{{ $good->image }}" alt="{{ $good->name }}"/>
+							<h3>{{ $good->name }}</h3>
+							<div class="price">
+								<h4>
+									<span class="mygoods-delete" onclick="location.href='/goods/detail?id={{ $good->id }}';">详情</span>
+									<span class="mygoods-delete" onclick="deleteReleaseGood({{ $good->id }})">删除</span>
+									@if ($good->status != 4)
+										<span class="mygoods-delete" onclick="confirmSell({{ $good->id }})">确认售出</span>
+									@endif
+								</h4>
+							</div>
+							<span class="b_btm"></span>
+						</a>
 					</div>
-					<span class="b_btm"></span>
+				@if ($index % 3 == 2 || count($goods) == $index + 1)
+					<div class="clear"></div>
 				</div>
-
-
-				<div class="grid1_of_3 mine-grid-4">
-					<img src="/resource/image/pic1.jpg" alt=""/>
-					<h3>图书教材</h3>
-					<div class="price">
-						<h4><span class="mygoods-delete" onClick="location.href='/goods/detail';">详情</span><span class="mygoods-delete">删除</span><span class="mygoods-delete">确认售出</span></h4>
-					</div>
-					<span class="b_btm"></span>
-				</div>
-
-
-
-				<div class="clear"></div>
-			</div>
+				@endif
+			@endforeach
+			{!! $goods->appends(['type' => $type])->render() !!}
 		</div>
 	</div>
 </div>
@@ -128,6 +124,24 @@ $(function() {
 <!-- END footer -->
 
 <script>
+	function deleteReleaseGood(id) {
+		$.ajax({
+			url: '/mine/delete/goods',
+			type: 'post',
+			data: {
+				id: id,
+				_token: '{{ csrf_token() }}'
+			},
+			success: function(data) {
+				alert(data.message)
+
+				if (data.status === 1) {
+					window.location.reload();
+				}
+			}
+		})
+	}
+
 	$('#searchbtn').on('click',function() {
 		var keyword = $('#searchinput').val()
 		if(keyword === '') {

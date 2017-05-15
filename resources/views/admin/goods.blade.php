@@ -34,7 +34,9 @@
 
     var goodsStatusMap = {
       1: '正常',
-      2: '已禁用'
+      2: '已禁用',
+      3: '已删除',
+      4: '交易已完成'
     }
 
     var userTable = $('#goods-table').DataTable({

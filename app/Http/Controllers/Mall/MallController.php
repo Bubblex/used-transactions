@@ -83,6 +83,10 @@ class MallController extends Controller
             return response()->json(['status' => 3, 'message' => '用户名或密码错误']);
         }
 
+        if ($user->status != 1) {
+            return response()->json(['status' => 4, 'message' => '该用户已或删除，无法正常登录']);
+        }
+
         session(['user' => $user]);
         return response()->json(['status' => 1, 'message' => '登录成功']);
     }

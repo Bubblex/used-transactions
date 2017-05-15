@@ -58,9 +58,13 @@ Route::group(['prefix' => 'mine', 'namespace' => 'User'], function() {
     Route::post('update/info', 'UserController@updateUserInfo');
 
     // 发布的商品
-    Route::get('goods', function() {
-        return view('mall.mine.goods');
-    });
+    Route::get('goods', 'UserController@releaseGoodsPage');
+
+    // 删除发布的商品
+    Route::post('delete/goods', 'UserController@deleteGoods');
+
+    // 交易成功
+    Route::post('success/goods', 'UserController@successGoods');
 });
 
 // 后台
