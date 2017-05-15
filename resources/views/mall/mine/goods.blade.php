@@ -142,6 +142,24 @@ $(function() {
 		})
 	}
 
+	function confirmSell(id) {
+		$.ajax({
+			url: '/mine/success/goods',
+			type: 'post',
+			data: {
+				id: id,
+				_token: '{{ csrf_token() }}'
+			},
+			success: function(data) {
+				alert(data.message)
+
+				if (data.status === 1) {
+					window.location.reload();
+				}
+			}
+		})
+	}
+
 	$('#searchbtn').on('click',function() {
 		var keyword = $('#searchinput').val()
 		if(keyword === '') {

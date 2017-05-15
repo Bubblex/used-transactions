@@ -102,4 +102,24 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function successGoods(Request $request) {
+        $id = $request->id;
+
+        $good = Good::find($id);
+        $good->status = 4;
+
+        if ($good->save()) {
+            return response()->json([
+                'status' => 1,
+                'message' => '确认售出成功'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 2,
+                'message' => '确认售出失败'
+            ]);
+        }
+    }
 }
