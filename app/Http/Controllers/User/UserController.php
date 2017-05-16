@@ -134,6 +134,7 @@ class UserController extends Controller
         $detail = $request->detail;
         $specification = $request->specification;
         $use_situation = $request->use_situation;
+        $image = $request->file('image');
 
         $goods = new Good;
         $goods->user_id = $user_id;
@@ -146,6 +147,12 @@ class UserController extends Controller
         $goods->detail = $detail;
         $goods->specification = $specification;
         $goods->use_situation = $use_situation;
+
+        if ($request->hasFile('image')) {
+            $filePath = 'uploads/'.time().'.'.$image->getClientOriginalExtension();
+            Image::make($image)->save($filePath);
+            $goods->image = '/'.$filePath;
+        }
 
         $result = $goods->save();
 

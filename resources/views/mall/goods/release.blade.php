@@ -117,6 +117,12 @@ $(function() {
                   </select>
                 </span>
               </div>
+              <div>
+                <span><label>上传图片</label></span>
+                <span>
+                  <input type="file" name="image" accept="image/*">
+                </span>
+              </div>
               <!--此处三个富文本编辑器-->
               <div>
                 <span><label>详细信息</label></span>
@@ -125,7 +131,7 @@ $(function() {
                 </div>
               </div>
               <div>
-                <span><label>产品规格</label></span>
+                <span><label>商品规格</label></span>
                 <div>
                   <script id="specification" name="content" type="text/plain"></script>
                 </div>
@@ -192,6 +198,7 @@ $(function() {
     var concat_telephone = $("input[name='concat_telephone']").val()
     var concat_name = $("input[name='concat_name']").val()
     var goods_type_id = $("[name='goods_type_id']").val()
+    var image = $("[name='image']").prop('files')
 
     if (name === '' || null) {
       alert('请输入商品名称')
@@ -217,23 +224,39 @@ $(function() {
     } else if (goods_type_id === '' || null) {
       alert('请选择商品分类')
       return
+    } else if (!ueDetail.hasContents()) {
+      alert('请填写商品详情');
+      return
+    } else if (!ueSpecification.hasContents()) {
+      alert('请填写商品规格');
+      return
+    } else if (!ueUseSituation.hasContents()) {
+      alert('请填写商品使用情况')
+      return
+    } else if (image.length === 0) {
+      alert('请上传图片')
+      return
     }
+
+    var data = new FormData();
+    data.append('name', name);
+    data.append('summary', summary);
+    data.append('price', price);
+    data.append('concat_telephone', concat_telephone);
+    data.append('concat_name', concat_name);
+    data.append('goods_type_id', goods_type_id);
+    data.append('detail', ueDetail.getContent());
+    data.append('specification', ueSpecification.getContent());
+    data.append('use_situation', ueUseSituation.getContent());
+    data.append('_token', '{{ csrf_token() }}');
+    data.append('image', image[0]);
 
     $.ajax({
 			url: "/mine/goods/release",
 			type: "POST",
-			data: {
-				name: name,
-				summary: summary,
-				price: price,
-				concat_telephone: concat_telephone,
-				concat_name: concat_name,
-				goods_type_id: goods_type_id,
-        detail: ueDetail.getContent(),
-        specification: ueSpecification.getContent(),
-        use_situation: ueUseSituation.getContent(),
-        _token: '{{ csrf_token() }}'
-			},
+			contentType: false,
+			processData: false,
+			data: data,
 			success: function(data) {
         alert(data.message)
 
