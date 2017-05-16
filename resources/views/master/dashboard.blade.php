@@ -1,6 +1,6 @@
 @extends('master.master')
 
-@section('title', '校园二手交易网 - 后台管理系统')
+@section('title', '校园二手网 - 后台管理系统')
 
 @section('body-class', 'hold-transition skin-blue sidebar-mini')
 

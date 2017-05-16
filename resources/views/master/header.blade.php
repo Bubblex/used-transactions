@@ -1,7 +1,7 @@
 <header class="main-header">
   <a href="/admin" class="logo">
-    <span class="logo-mini">校园二手交易网</span>
-    <span class="logo-lg">校园二手交易网</span>
+    <span class="logo-mini">校园二手网</span>
+    <span class="logo-lg">校园二手网</span>
   </a>
   <nav class="navbar navbar-static-top" role="navigation">
     <a href="javascript:" class="sidebar-toggle" data-toggle="offcanvas" role="button">

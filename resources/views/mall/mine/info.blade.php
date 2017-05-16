@@ -126,24 +126,6 @@ $(function() {
 @include('master.mall-footer')
 <!-- END footer -->
 
-<script>
-	$('#searchbtn').on('click',function() {
-		var keyword = $('#searchinput').val()
-		if(keyword === '') {
-			alert('请输入搜索关键字')
-			return
-		}
-		$.ajax({
-			url: "",
-			type: "POST",
-			data: {
-				keyword: keyword
-			},
-			success: function(data) {
-			}
-		})
-	})	
-</script>
 
 <script>
 $('#js-edit').on('click',function() {

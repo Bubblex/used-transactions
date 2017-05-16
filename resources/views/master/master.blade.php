@@ -4,7 +4,7 @@
   @section('head-before')
   @show
 
-  <title>@yield('title', '校园二手交易网')</title>
+  <title>@yield('title', '校园二手网')</title>
 
   @section('meta')
     <meta charset="utf-8">

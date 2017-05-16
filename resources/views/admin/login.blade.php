@@ -67,9 +67,6 @@
           </div>
         </div>
       </form>
-      <div style="text-align: right;">
-        <a href="#">忘记密码？</a>
-      </div>
     </div>
   </div>
 @endsection

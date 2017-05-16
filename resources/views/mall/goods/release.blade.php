@@ -63,12 +63,7 @@ $(function() {
 				<a href="/"><img src="/resource/image/logo.png" alt=""/> </a>
 			</div>
 
-			<div class="h_search">
-	    		<form>
-	    			<input id="searchinput" type="text" placeholder="请输入搜索关键字">
-	    			<span id="searchbtn" type="submit"></span>
-	    		</form>
-			</div>
+      @include('master.header-search')
 			@include('master.header-account')
 		</div>
 	</div>
@@ -157,22 +152,6 @@ $(function() {
 <!-- END footer -->
 
 <script>
-	$('#searchbtn').on('click',function() {
-		var keyword = $('#searchinput').val()
-		if(keyword === '') {
-			alert('请输入搜索关键字')
-			return
-		}
-		$.ajax({
-			url: "",
-			type: "POST",
-			data: {
-				keyword: keyword
-			},
-			success: function(data) {
-			}
-		})
-	})	
 </script>
 <script type="text/javascript" src="/resource/vendor/ueditor/ueditor.config.js"></script>
 <!-- 编辑器源码文件 -->
