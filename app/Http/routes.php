@@ -45,7 +45,7 @@ Route::group(['prefix' => 'goods', 'namespace' => 'Mall'], function() {
 });
 
 // 个人中心
-Route::group(['prefix' => 'mine', 'namespace' => 'User'], function() {
+Route::group(['prefix' => 'mine', 'namespace' => 'User', 'middleware' => 'mallAuth'], function() {
     // 修改个人资料
     Route::get('change', function() {
         return view('mall.mine.change');
