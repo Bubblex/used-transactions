@@ -124,6 +124,24 @@ $(function() {
               </div>
               <!--此处三个富文本编辑器-->
               <div>
+                <span><label>详细信息</label></span>
+                <div>
+                  <script id="detail" name="content" type="text/plain"></script>
+                </div>
+              </div>
+              <div>
+                <span><label>产品规格</label></span>
+                <div>
+                  <script id="specification" name="content" type="text/plain"></script>
+                </div>
+              </div>
+              <div>
+                <span><label>使用情况</label></span>
+                <div>
+                  <script id="use_situation" name="content" type="text/plain"></script>
+                </div>
+              </div>
+              <div>
                 <span><input type="submit" class="" value="发布" id='release'></span>
             </div>
   				<div class="clear"></div>		
@@ -156,7 +174,38 @@ $(function() {
 		})
 	})	
 </script>
+<script type="text/javascript" src="/resource/vendor/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="/resource/vendor/ueditor/ueditor.all.js"></script>
 <script>
+  var ueConfig = {
+    toolbars: [
+      [
+        'undo',
+        'redo',
+        'bold',
+        'fontfamily', //字体
+        'fontsize', //字号
+        'paragraph', //段落格式
+        'simpleupload', //单图上传
+        'italic', //斜体
+        'underline', //下划线
+        'strikethrough', //删除线
+        'forecolor', //字体颜色
+        'backcolor', //背景色
+        'justifyleft', //居左对齐
+        'justifyright', //居右对齐
+        'justifycenter', //居中对齐
+        'justifyjustify', //两端对齐
+      ],
+    ],
+    elementPathEnabled: false,
+  }
+
+  var ueDetail = UE.getEditor('detail', ueConfig);
+  var ueSpecification = UE.getEditor('specification', ueConfig);
+  var ueUseSituation = UE.getEditor('use_situation', ueConfig);
+
   $('#release').on('click',function() {
     var name = $("input[name='name']").val()
     var summary = $("input[name='summary']").val()
@@ -192,17 +241,26 @@ $(function() {
     }
 
     $.ajax({
-			url: "",
+			url: "/mine/goods/release",
 			type: "POST",
 			data: {
-				name,
-				summary,
-				price,
-				concat_telephone,
-				concat_name,
-				goods_type_id,
+				name: name,
+				summary: summary,
+				price: price,
+				concat_telephone: concat_telephone,
+				concat_name: concat_name,
+				goods_type_id: goods_type_id,
+        detail: ueDetail.getContent(),
+        specification: ueSpecification.getContent(),
+        use_situation: ueUseSituation.getContent(),
+        _token: '{{ csrf_token() }}'
 			},
 			success: function(data) {
+        alert(data.message)
+
+        if (data.status === 1) {
+          window.location.href = '/goods/detail?id=' + data.id
+        }
 			}
 		})
   })

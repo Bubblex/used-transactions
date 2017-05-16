@@ -60,4 +60,8 @@ class GoodsController extends Controller
             'likeGoods' => $likeGoods
         ]);
     }
+
+    public function releaseGoodsPage(Request $request) {
+        return view('mall.goods.release');
+    }
 }

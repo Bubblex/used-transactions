@@ -122,4 +122,45 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function releaseGoods(Request $request) {
+        $user_id = session('user')->id;
+        $name = $request->name;
+        $summary = $request->summary;
+        $price = $request->price;
+        $concat_telephone = $request->concat_telephone;
+        $concat_name = $request->concat_name;
+        $goods_type_id = $request->goods_type_id;
+        $detail = $request->detail;
+        $specification = $request->specification;
+        $use_situation = $request->use_situation;
+
+        $goods = new Good;
+        $goods->user_id = $user_id;
+        $goods->name = $name;
+        $goods->summary = $summary;
+        $goods->price = $price;
+        $goods->concat_telephone = $concat_telephone;
+        $goods->concat_name = $concat_name;
+        $goods->goods_type_id = $goods_type_id;
+        $goods->detail = $detail;
+        $goods->specification = $specification;
+        $goods->use_situation = $use_situation;
+
+        $result = $goods->save();
+
+        if ($result) {
+            return response()->json([
+                'id' => $goods->id,
+                'status' => 1,
+                'message' => '发布成功'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 2,
+                'message' => '发布失败，请稍后再试'
+            ]);
+        }
+    }
 }

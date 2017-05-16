@@ -38,19 +38,14 @@ Route::group(['prefix' => 'goods', 'namespace' => 'Mall'], function() {
     // 商品列表
     Route::get('list', 'GoodsController@listPage');
 
-    // 发布商品
-    Route::get('release', function() {
-        return view('mall.goods.release');
+    Route::group(['middleware' => 'mallAuth'], function() {
+        // 发布商品页
+        Route::get('release', 'GoodsController@releaseGoodsPage');
     });
 });
 
 // 个人中心
 Route::group(['prefix' => 'mine', 'namespace' => 'User', 'middleware' => 'mallAuth'], function() {
-    // 修改个人资料
-    Route::get('change', function() {
-        return view('mall.mine.change');
-    });
-
     // 个人信息
     Route::get('info', 'UserController@userInfoPage');
 
@@ -65,6 +60,9 @@ Route::group(['prefix' => 'mine', 'namespace' => 'User', 'middleware' => 'mallAu
 
     // 交易成功
     Route::post('success/goods', 'UserController@successGoods');
+
+    // 发布商品接口
+    Route::post('goods/release', 'UserController@releaseGoods');
 });
 
 // 后台
