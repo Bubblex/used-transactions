@@ -121,7 +121,7 @@ $(function() {
 			<div class="grids_of_3">
 
 				<div class="grid1_of_3">
-					<a href="/goods/list">
+					<a href="/goods/list?id=1">
 						<img src="/resource/image/pic1.jpg" alt=""/>
 						<h3>图书教材</h3>
 						<div class="price">
@@ -132,7 +132,7 @@ $(function() {
 				</div>
 
 				<div class="grid1_of_3">
-					<a href="details.html">
+					<a href="/goods/list?id=2">
 						<img src="/resource/image/pic2.jpg" alt=""/>
 						<h3>数码配件</h3>
 						<div class="price">
@@ -143,7 +143,7 @@ $(function() {
 				</div>
 
 				<div class="grid1_of_3">
-					<a href="details.html">
+					<a href="/goods/list?id=3">
 						<img src="/resource/image/pic3.jpg" alt=""/>
 						<h3>化妆品</h3>
 						<div class="price">
@@ -154,7 +154,7 @@ $(function() {
 				</div>
 				
 				<div class="grid1_of_3">
-					<a href="details.html">
+					<a href="/goods/list?id=4">
 						<img src="/resource/image/pic4.jpg" alt=""/>
 						<h3>数码</h3>
 						<div class="price">
@@ -165,7 +165,7 @@ $(function() {
 				</div>
 
 				<div class="grid1_of_3">
-					<a href="details.html">
+					<a href="/goods/list?id=5">
 						<img src="/resource/image/pic5.jpg" alt=""/>
 						<h3>手机</h3>
 						<div class="price">
@@ -176,7 +176,7 @@ $(function() {
 				</div>
 
 				<div class="grid1_of_3">
-					<a href="details.html">
+					<a href="/goods/list?id=6">
 						<img src="/resource/image/pic6.jpg" alt=""/>
 						<h3>电脑</h3>
 						<div class="price">
@@ -187,7 +187,7 @@ $(function() {
 				</div>
 				
 				<div class="grid1_of_3">
-					<a href="details.html">
+					<a href="/goods/list?id=7">
 						<img src="/resource/image/pic4.jpg" alt=""/>
 						<h3>生活娱乐</h3>
 						<div class="price">
@@ -198,7 +198,7 @@ $(function() {
 				</div>
 
 				<div class="grid1_of_3">
-					<a href="details.html">
+					<a href="/goods/list?id=8">
 						<img src="/resource/image/pic5.jpg" alt=""/>
 						<h3>校园代步</h3>
 						<div class="price">
@@ -209,7 +209,7 @@ $(function() {
 				</div>
 				
 				<div class="grid1_of_3">
-					<a href="details.html">
+					<a href="/goods/list?id=9">
 						<img src="/resource/image/pic6.jpg" alt=""/>
 						<h3>衣物伞帽</h3>
 						<div class="price">

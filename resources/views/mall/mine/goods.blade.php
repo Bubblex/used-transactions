@@ -113,6 +113,9 @@ $(function() {
 				</div>
 				@endif
 			@endforeach
+			@if(empty($good))
+				<p class="none-goods">呜呜呜~~~~(>_<)~~~~  暂无售出物品</p>
+			@endif
 			{!! $goods->appends(['type' => $type])->render() !!}
 		</div>
 	</div>

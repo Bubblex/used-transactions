@@ -84,6 +84,9 @@
 			</div>
 			@endif
 		@endforeach
+		@if(empty($good))
+			<p class="none-goods">呜呜呜~~~~(>_<)~~~~  暂无物品</p>
+		@endif
 		<div class="pagination-box">
 			{!! $goods->appends(['id' => $id])->render() !!}
 		</div>
