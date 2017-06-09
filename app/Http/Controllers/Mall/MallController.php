@@ -60,6 +60,7 @@ class MallController extends Controller
         $user->account = $account;
         $user->nickname = $nickname;
         $user->password = md5($password);
+        $user->status = 1;
 
         if ($user->save()) {
             return response()->json(['status' => 1]);
