@@ -268,7 +268,7 @@ class AccountController extends Controller
      * @return void
      */
     public function getGoodsList(Request $request) {
-        return Datatables::eloquent(Good::with('type')->with(['user' => function($query) {
+        return Datatables::eloquent(Good::with('type')->orderBy('id', 'desc')->with(['user' => function($query) {
             $query->select('id', 'account', 'nickname');
         }]))->make(true);
     }
