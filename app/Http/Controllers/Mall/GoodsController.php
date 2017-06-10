@@ -18,13 +18,13 @@ class GoodsController extends Controller
         $goods = null;
         $type = null;
 
-        if ($id) {
+        if ($id) {  
             $type = GoodType::find($id);
-            $goods = Good::where('goods_type_id', $id);
+            $goods = Good::where('goods_type_id', $id)->where('status',1)->orderBy('id', 'desc');
         }
 
         if ($search) {
-            $goods = Good::where('name', 'like', '%'.$search.'%');
+            $goods = Good::where('name', 'like', '%'.$search.'%')->where('status',1);
         }
 
         if ($goods) {

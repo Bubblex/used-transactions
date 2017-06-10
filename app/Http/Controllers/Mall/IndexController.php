@@ -14,7 +14,7 @@ class IndexController extends Controller
 {
     public function indexPage() {
         $banners = Banner::all();
-        $goods = Good::orderBy('id', 'desc')->take(12)->get();
+        $goods = Good::orderBy('id', 'desc')->where('status',1)->take(12)->get();
 
         return view('mall.home.index')->with([
             'banners' => $banners,
